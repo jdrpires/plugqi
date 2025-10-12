@@ -1,1 +1,6 @@
+# .gitignore
+.env
+keys/
+__pycache__/
+*.pyc
 .idea
