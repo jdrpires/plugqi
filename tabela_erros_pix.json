@@ -1,0 +1,62 @@
+{
+  "bacen": {
+    "AB03": {
+      "codigo": "AB03",
+      "descricao": "Liquidação da transação interrompida devido a timeout no SPI",
+      "categoria": "BACEN",
+      "acao": "Tentar novamente"
+    },
+    "AC03": {
+      "codigo": "AC03",
+      "descricao": "Conta do recebedor inválida ou inexistente",
+      "categoria": "BACEN",
+      "acao": "Verificar dados do recebedor"
+    },
+    "AG03": {
+      "codigo": "AG03",
+      "descricao": "Falha na validação do CPF/CNPJ",
+      "categoria": "BACEN",
+      "acao": "Verificar documento"
+    },
+    "AM04": {
+      "codigo": "AM04",
+      "descricao": "Saldo insuficiente",
+      "categoria": "BACEN",
+      "acao": "Verificar saldo disponível"
+    },
+    "BE08": {
+      "codigo": "BE08",
+      "descricao": "Chave PIX não encontrada",
+      "categoria": "BACEN",
+      "acao": "Verificar chave PIX"
+    }
+  },
+  "spb": {
+    "DS04": {
+      "codigo": "DS04",
+      "descricao": "Ordem rejeitada pelo participante recebedor",
+      "categoria": "SPB",
+      "acao": "Contatar instituição recebedora"
+    },
+    "FF01": {
+      "codigo": "FF01",
+      "descricao": "Transação inválida ou malformada",
+      "categoria": "SPB",
+      "acao": "Verificar formato da transação"
+    }
+  },
+  "med": {
+    "MD06": {
+      "codigo": "MD06",
+      "descricao": "Solicitação de devolução por suspeita de fraude",
+      "categoria": "MED",
+      "acao": "Analisar transação"
+    },
+    "SL02": {
+      "codigo": "SL02",
+      "descricao": "Devolução por solicitação do recebedor",
+      "categoria": "MED",
+      "acao": "Processar devolução"
+    }
+  }
+}

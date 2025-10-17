@@ -1,0 +1,103 @@
+{
+  "Pessoa Física Básico": {
+    "request_control_key": "0023ca9a-29c3-4d62-9a5d-4833ca7e1f07",
+    "amount": 150.75,
+    "expiration": "2025-11-16",
+    "payer_data": {
+      "name": "João Silva Santos",
+      "document_number": "12345678901",
+      "person_type": "natural"
+    },
+    "bank_teller_instructions": "Pagamento da fatura 001 - Não receber após vencimento"
+  },
+  "Pessoa Jurídica c/ Multa/Juros": {
+    "request_control_key": "16e7e070-d5e9-4637-9670-e70217299fc3",
+    "amount": 2500.0,
+    "expiration": "2025-12-01",
+    "bank_teller_instructions": "Pagamento de serviços de consultoria - Ref: Contrato 2024/001",
+    "payer_data": {
+      "name": "Empresa XYZ Tecnologia Ltda",
+      "document_number": "12345678000195",
+      "person_type": "legal",
+      "contact": {
+        "email": "financeiro@empresa.com"
+      }
+    },
+    "fine_data": {
+      "fine_type": "percentage",
+      "fine_percentage": 2,
+      "days_to_fine": 1
+    },
+    "interest_data": {
+      "interest_type": "calendar_days_monthly_percentage",
+      "interest_percentage": 1,
+      "days_to_interest": 1
+    }
+  },
+  "Com Desconto": {
+    "request_control_key": "b9f41d98-8145-4f9e-b57f-c266519e10d6",
+    "amount": 1000.0,
+    "expiration": "2025-12-16",
+    "bank_teller_instructions": "Pagamento com desconto para antecipação",
+    "payer_data": {
+      "name": "Maria Oliveira Costa",
+      "document_number": "98765432100",
+      "person_type": "natural",
+      "contact": {
+        "email": "maria@email.com"
+      }
+    },
+    "discounts_data": [
+      {
+        "discount_number": 1,
+        "discount_type": "percentage",
+        "discount_percentage": 5.0,
+        "discount_limit_date": "2025-11-01"
+      }
+    ]
+  },
+  "Valor Alto": {
+    "request_control_key": "311bfa11-b7ab-48c6-a97e-3a6ff1897185",
+    "amount": 50000.0,
+    "expiration": "2026-01-15",
+    "bank_teller_instructions": "Pagamento de equipamentos - Pedido 12345",
+    "payer_data": {
+      "name": "Indústria ABC S.A.",
+      "document_number": "11222333000144",
+      "person_type": "legal"
+    },
+    "protest_data": {
+      "days_to_protest": 10
+    }
+  },
+  "Vencimento Curto": {
+    "request_control_key": "c7ae1bd2-e953-494d-b2cf-bbeb29d67816",
+    "amount": 89.9,
+    "expiration": "2025-10-24",
+    "payer_data": {
+      "name": "Carlos Eduardo Lima",
+      "document_number": "55566677788",
+      "person_type": "natural"
+    },
+    "bank_teller_instructions": "Pagamento urgente - Vence em 7 dias"
+  },
+  "Cartão de Crédito": {
+    "request_control_key": "93550687-e871-4676-9ccd-21efb49e86c6",
+    "amount": 0.0,
+    "expiration": "2025-11-16",
+    "financial_instrument_type": "credit_card",
+    "bank_teller_instructions": "Fatura do cartão de crédito",
+    "payer_data": {
+      "name": "Ana Paula Ferreira",
+      "document_number": "11122233344",
+      "person_type": "natural"
+    },
+    "partial_payment_data": {
+      "partial_payment_minimum_type": "percentage",
+      "partial_payment_minimum_percentage": 10.0,
+      "partial_payment_maximum_type": "percentage",
+      "partial_payment_maximum_percentage": 100.0,
+      "partial_payment_quantity": 12
+    }
+  }
+}

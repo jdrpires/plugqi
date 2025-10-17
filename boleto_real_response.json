@@ -1,0 +1,10 @@
+{
+  "request_control_key": "a600d24b-0269-42f3-b4ef-005826fad635",
+  "bank_slip_key": "031f7c74-2d2c-48eb-ada3-4335ba0e4f64",
+  "bank_slip_status": "accepted",
+  "our_number": 1,
+  "barcode": "32997126700000150750001090000000000168670830",
+  "digitable_line": "32990001039000000000101686708304712670000015075",
+  "qr_code_data": null,
+  "created_at": "2025-10-17T14:21:20Z"
+}

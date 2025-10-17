@@ -1,0 +1,30 @@
+{
+  "header": {
+    "tipo_registro": "0",
+    "codigo_retorno": "2",
+    "literal_retorno": "RETORNO",
+    "codigo_servico": "01",
+    "literal_servico": "COBRANCA",
+    "data_geracao": "171025",
+    "sequencial_arquivo": "000001"
+  },
+  "detalhes": [
+    {
+      "tipo_registro": "1",
+      "nosso_numero": "000000001",
+      "codigo_ocorrencia": "06",
+      "descricao_ocorrencia": "LIQUIDACAO",
+      "data_ocorrencia": "171025",
+      "valor_titulo": "0000000015075",
+      "valor_pago": "0000000015075",
+      "codigo_barras": "32993126700000150750001090000000000168670830",
+      "data_credito": "171025"
+    }
+  ],
+  "trailer": {
+    "tipo_registro": "9",
+    "quantidade_titulos": "000001",
+    "valor_total": "0000000015075",
+    "quantidade_registros": "000003"
+  }
+}

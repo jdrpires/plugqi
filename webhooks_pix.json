@@ -1,0 +1,34 @@
+{
+  "pix_received": {
+    "event_type": "pix_received",
+    "transaction_id": "39e5a5d4-e484-4cdf-b59c-f6d6310525e5",
+    "end_to_end_id": "E2025101715231698e4f1af",
+    "amount": 150.0,
+    "sender_name": "Maria Santos",
+    "sender_document": "12345678901",
+    "sender_key": "maria@exemplo.com",
+    "description": "Pagamento recebido",
+    "transaction_date": "2025-10-17T15:23:16.092836",
+    "account_key": "5756066f-f592-43ae-b254-8d51a0026a77"
+  },
+  "pix_sent": {
+    "event_type": "pix_sent",
+    "transaction_id": "423a5b84-4779-427e-90c6-a2d7116b4406",
+    "end_to_end_id": "E20251017152316145843b7",
+    "amount": 100.5,
+    "recipient_name": "João Silva",
+    "recipient_key": "joao@exemplo.com",
+    "status": "confirmed",
+    "transaction_date": "2025-10-17T15:23:16.092879",
+    "account_key": "5756066f-f592-43ae-b254-8d51a0026a77"
+  },
+  "pix_failed": {
+    "event_type": "pix_failed",
+    "transaction_id": "b7f977ba-e1fa-4928-8011-fa6189192eec",
+    "error_code": "AM04",
+    "error_description": "Saldo insuficiente",
+    "amount": 500.0,
+    "failed_at": "2025-10-17T15:23:16.092897",
+    "account_key": "5756066f-f592-43ae-b254-8d51a0026a77"
+  }
+}

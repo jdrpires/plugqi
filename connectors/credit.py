@@ -1,8 +1,7 @@
 # connectors/credit.py
-from ..qitech_client import QiTechClient
 
 class CreditConnector:
-    def __init__(self, client: QiTechClient):
+    def __init__(self, client):
         self.client = client
 
     def create_debt(self, borrower_data, financial_data):

@@ -1,0 +1,8 @@
+{
+  "event_type": "payment_failed",
+  "payment_key": "exemplo-key-falha",
+  "payment_status": "failed",
+  "error_code": "INSUFFICIENT_FUNDS",
+  "error_message": "Saldo insuficiente",
+  "failed_at": "2025-10-17T11:36:16.780437"
+}

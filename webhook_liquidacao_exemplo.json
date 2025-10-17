@@ -1,0 +1,11 @@
+{
+  "event_type": "bank_slip_payment",
+  "bank_slip_key": "exemplo-bank-slip-key",
+  "bank_slip_status": "paid",
+  "payment_amount": 150.75,
+  "payment_date": "2025-10-17T11:28:58.808323",
+  "liquidation_date": "2025-10-17T11:28:58.808347",
+  "payment_method": "bank_slip",
+  "payer_document": "11144477735",
+  "payment_channel": "internet_banking"
+}

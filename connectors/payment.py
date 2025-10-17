@@ -1,8 +1,7 @@
 # connectors/payment.py
-from ..qitech_client import QiTechClient
 
 class PaymentConnector:
-    def __init__(self, client: QiTechClient):
+    def __init__(self, client):
         self.client = client
 
     def create_pix_payment(self, amount, recipient_key):

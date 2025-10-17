@@ -1,0 +1,32 @@
+{
+  "header": {
+    "tipo_registro": "0",
+    "codigo_retorno": "2",
+    "literal_retorno": "RETORNO",
+    "data_geracao": "171025"
+  },
+  "detalhes": [
+    {
+      "tipo_registro": "1",
+      "nosso_numero": 2,
+      "codigo_ocorrencia": "06",
+      "data_ocorrencia": "171025",
+      "valor_titulo": 0,
+      "valor_pago": 0,
+      "codigo_barras": "32993126700000100500001090000000000268670830"
+    },
+    {
+      "tipo_registro": "1",
+      "nosso_numero": 3,
+      "codigo_ocorrencia": "06",
+      "data_ocorrencia": "171025",
+      "valor_titulo": 0,
+      "valor_pago": 0,
+      "codigo_barras": "32991128200001000000001090000000000368670830"
+    }
+  ],
+  "trailer": {
+    "tipo_registro": "9",
+    "quantidade_registros": 4
+  }
+}

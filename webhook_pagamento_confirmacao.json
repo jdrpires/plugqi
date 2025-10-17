@@ -1,0 +1,11 @@
+{
+  "event_type": "payment_confirmation",
+  "payment_key": "7c8a60c9-6bb9-43ec-a4a5-42cba365c1c9",
+  "payment_status": "confirmed",
+  "payment_amount": 150.75,
+  "payment_date": "2025-10-17T11:36:16.780409",
+  "transaction_id": "TXN20251017113616",
+  "bank_receipt": "RCPT123456789",
+  "fee_amount": 2.5,
+  "net_amount": 148.25
+}
