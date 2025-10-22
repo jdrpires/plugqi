@@ -1,0 +1,42 @@
+{
+  "pending_additional_data": {
+    "webhook_type": "account_request.status_change",
+    "key": "96b6d4fc-2f1f-4e08-8ea5-026a0a7a024b",
+    "status": "pending_additional_data",
+    "event_datetime": "2025-10-17T17:12:27.421170",
+    "data": {
+      "account_request_key": "96b6d4fc-2f1f-4e08-8ea5-026a0a7a024b",
+      "account_info": {
+        "account_branch": "0001",
+        "account_number": "1234567",
+        "account_digit": "8"
+      }
+    }
+  },
+  "approved": {
+    "webhook_type": "account_request.status_change",
+    "key": "9993342a-f8a3-481b-8d88-18d84a559699",
+    "status": "approved",
+    "event_datetime": "2025-10-17T17:12:27.421171",
+    "data": {
+      "account_request_key": "96b6d4fc-2f1f-4e08-8ea5-026a0a7a024b",
+      "account_key": "9993342a-f8a3-481b-8d88-18d84a559699",
+      "account_info": {
+        "account_branch": "0001",
+        "account_number": "1234567",
+        "account_digit": "8"
+      }
+    }
+  },
+  "rejected": {
+    "webhook_type": "account_request.status_change",
+    "key": "8f7d156d-059c-4a95-8418-bd6b0f95f7a2",
+    "status": "rejected",
+    "event_datetime": "2025-10-17T17:12:27.421174",
+    "data": {
+      "account_request_key": "eee2758d-be29-4fdc-aaef-cbf0331cb56e",
+      "rejection_reason": "Documentos inválidos",
+      "rejection_code": "INVALID_DOCUMENTS"
+    }
+  }
+}

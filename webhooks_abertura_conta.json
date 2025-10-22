@@ -1,0 +1,28 @@
+{
+  "approved": {
+    "webhook_type": "account_request.status_change",
+    "key": "dfc8a87b-9987-442c-9153-6d22feb545f7",
+    "status": "approved",
+    "event_datetime": "2025-10-17T17:08:37.911550",
+    "data": {
+      "account_request_key": "56d03763-e57b-4ebb-847b-dcbd26272072",
+      "account_key": "f812d951-85b8-4dfd-9da9-00243794f9f8",
+      "account_info": {
+        "account_branch": "0001",
+        "account_number": "1234567",
+        "account_digit": "8"
+      }
+    }
+  },
+  "rejected": {
+    "webhook_type": "account_request.status_change",
+    "key": "25be3028-2604-46d2-b103-e138eb4d7e5f",
+    "status": "rejected",
+    "event_datetime": "2025-10-17T17:08:37.911557",
+    "data": {
+      "account_request_key": "afcb1134-285e-42a3-ad2c-840aab925732",
+      "rejection_reason": "Documentos inválidos",
+      "rejection_code": "INVALID_DOCUMENTS"
+    }
+  }
+}

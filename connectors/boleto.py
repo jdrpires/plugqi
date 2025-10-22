@@ -66,3 +66,39 @@ class BoletoConnector:
             "payer_data": self.build_payer_data(payer_name, payer_document),
             **kwargs
         }
+
+    def create_bolepix(self, account_key: str, requester_profile_key: str, 
+                      amount: float, expiration: str, payer_name: str, payer_document: str,
+                      pix_key: str = "183466bd-6383-4517-96f2-48f4f1488692", 
+                      description: str = "", request_control_key: Optional[str] = None) -> Dict[str, Any]:
+        """Cria bolePix (boleto + PIX) usando chave PIX padrão"""
+        import uuid
+        
+        bolepix_data = {
+            "request_control_key": request_control_key or str(uuid.uuid4()),
+            "amount": amount,
+            "expiration": expiration,
+            "bank_teller_instructions": description or "BolePix - Pague via PIX ou boleto",
+            "payer_data": self.build_payer_data(payer_name, payer_document),
+            "pix_key": pix_key
+        }
+        
+        return self.create_boleto(account_key, requester_profile_key, bolepix_data)
+
+    def create_bolepix_instant(self, account_key: str, requester_profile_key: str,
+                              amount: float, expiration: str, payer_name: str, payer_document: str,
+                              pix_key: str = "183466bd-6383-4517-96f2-48f4f1488692",
+                              description: str = "", request_control_key: Optional[str] = None) -> Dict[str, Any]:
+        """Cria bolePix instantâneo"""
+        import uuid
+        
+        bolepix_data = {
+            "request_control_key": request_control_key or str(uuid.uuid4()),
+            "amount": amount,
+            "expiration": expiration,
+            "bank_teller_instructions": description or "BolePix Instantâneo - Pague via PIX ou boleto",
+            "payer_data": self.build_payer_data(payer_name, payer_document),
+            "pix_key": pix_key
+        }
+        
+        return self.create_boleto_instant(account_key, requester_profile_key, bolepix_data)

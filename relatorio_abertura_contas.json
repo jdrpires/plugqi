@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-10-17T17:12:27.421438",
+  "total_testes": 6,
+  "testes_passaram": 6,
+  "taxa_sucesso": "100.0%",
+  "resultados": [
+    {
+      "teste": "Validações Básicas",
+      "passou": true
+    },
+    {
+      "teste": "Helpers de Construção",
+      "passou": true
+    },
+    {
+      "teste": "Payload Etapa 1",
+      "passou": true
+    },
+    {
+      "teste": "Payload Etapa 2",
+      "passou": true
+    },
+    {
+      "teste": "Webhooks",
+      "passou": true
+    },
+    {
+      "teste": "Cenários de Mock",
+      "passou": true
+    }
+  ],
+  "funcionalidades_testadas": [
+    "Validações de CPF/CNPJ",
+    "Sistema de mock por primeiro dígito",
+    "Helpers de construção de payload",
+    "Fluxo duas etapas (POST + PATCH)",
+    "Webhooks de status change",
+    "Cenários de aprovação/rejeição"
+  ],
+  "arquivos_gerados": [
+    "relatorio_webhooks_abertura.json",
+    "relatorio_cenarios_mock.json",
+    "relatorio_abertura_contas.json"
+  ]
+}

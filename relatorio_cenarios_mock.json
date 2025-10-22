@@ -1,0 +1,26 @@
+[
+  {
+    "cenario": "Aprovação Automática",
+    "cnpj": "91234567000195",
+    "primeiro_digito": "9",
+    "status_esperado": "automatic_approval",
+    "empresa": "Empresa Aprovada Ltda",
+    "representante_cpf": "91144477735"
+  },
+  {
+    "cenario": "Rejeição Automática",
+    "cnpj": "81234567000195",
+    "primeiro_digito": "8",
+    "status_esperado": "automatic_rejection",
+    "empresa": "Empresa Rejeitada Ltda",
+    "representante_cpf": "81144477735"
+  },
+  {
+    "cenario": "Análise Manual",
+    "cnpj": "51234567000195",
+    "primeiro_digito": "5",
+    "status_esperado": "manual_analysis",
+    "empresa": "Empresa Análise Ltda",
+    "representante_cpf": "51144477735"
+  }
+]
