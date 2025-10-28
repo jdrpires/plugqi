@@ -1,93 +1,101 @@
 #!/usr/bin/env python3
 """
-Script para testar o PlugQi de forma prática
+Sistema de testes atualizado do PlugQi
+Executa diferentes tipos de teste conforme necessidade
 """
-import subprocess
 import sys
+import subprocess
+import os
+from datetime import datetime
 
-def run_unit_tests():
-    """Executa testes unitários"""
-    print("🧪 Executando testes unitários...")
-    result = subprocess.run([
-        sys.executable, "-m", "pytest", "tests/", "-v", "--tb=short"
-    ], capture_output=True, text=True)
-    
-    print(result.stdout)
-    if result.stderr:
-        print("STDERR:", result.stderr)
-    
-    return result.returncode == 0
+def print_header(title):
+    print(f"\n{'='*60}")
+    print(f"🔄 {title}")
+    print(f"{'='*60}")
 
-def run_smoke_test():
-    """Executa smoke test básico"""
-    print("\n🔥 Executando smoke test...")
-    result = subprocess.run([
-        sys.executable, "examples/smoke_test.py"
-    ], capture_output=True, text=True)
+def run_test_file(filename, description):
+    """Executa arquivo de teste específico"""
+    if not os.path.exists(filename):
+        print(f"❌ Arquivo {filename} não encontrado")
+        return False
     
-    print(result.stdout)
-    if result.stderr:
-        print("STDERR:", result.stderr)
-    
-    return result.returncode == 0
-
-def run_integration_test():
-    """Executa teste de integração"""
-    print("\n🔗 Executando teste de integração...")
-    result = subprocess.run([
-        sys.executable, "test_integration.py"
-    ], capture_output=True, text=True)
-    
-    print(result.stdout)
-    if result.stderr:
-        print("STDERR:", result.stderr)
-    
-    return result.returncode == 0
+    print_header(description)
+    try:
+        result = subprocess.run([sys.executable, filename], capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            print(f"✅ {description} - SUCESSO")
+            print(result.stdout)
+            return True
+        else:
+            print(f"❌ {description} - FALHOU")
+            if result.stderr:
+                print(f"Erro: {result.stderr}")
+            if result.stdout:
+                print(result.stdout)
+            return False
+    except Exception as e:
+        print(f"❌ Erro ao executar {filename}: {e}")
+        return False
 
 def main():
-    """Executa todos os tipos de teste"""
-    print("🚀 Executando bateria completa de testes do PlugQi\n")
+    print("🚀 PLUGQI - SISTEMA DE TESTES INTEGRADO")
+    print(f"📅 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("="*80)
     
+    # Lista de testes disponíveis
     tests = [
-        ("Testes Unitários", run_unit_tests),
-        ("Teste de Integração", run_integration_test),
-        ("Smoke Test", run_smoke_test)
+        ("test_automated_simple.py", "Testes Automatizados Simples"),
+        ("test_integration.py", "Testes de Integração"),
+        ("test_comprehensive.py", "Testes Completos com API"),
+        ("generate_comprehensive_report.py", "Relatório Completo")
     ]
     
     results = []
-    for name, test_func in tests:
-        print(f"\n{'='*50}")
-        print(f"📋 {name}")
-        print('='*50)
-        
-        try:
-            success = test_func()
-            results.append((name, success))
-            status = "✅ PASSOU" if success else "❌ FALHOU"
-            print(f"\n{status}: {name}")
-        except Exception as e:
-            print(f"❌ ERRO em {name}: {e}")
-            results.append((name, False))
+    
+    # Executa cada teste
+    for filename, description in tests:
+        success = run_test_file(filename, description)
+        results.append((description, success))
+    
+    # Executa testes unitários com pytest
+    print_header("Testes Unitários (pytest)")
+    try:
+        result = subprocess.run([sys.executable, "-m", "pytest", "tests/", "-v"], 
+                              capture_output=True, text=True)
+        if result.returncode == 0:
+            print("✅ Testes Unitários - SUCESSO")
+            print(result.stdout)
+            results.append(("Testes Unitários", True))
+        else:
+            print("❌ Testes Unitários - FALHOU")
+            if result.stderr:
+                print(f"Erro: {result.stderr}")
+            results.append(("Testes Unitários", False))
+    except Exception as e:
+        print(f"❌ Erro ao executar pytest: {e}")
+        results.append(("Testes Unitários", False))
     
     # Resumo final
-    print(f"\n{'='*50}")
+    print("\n" + "="*80)
     print("📊 RESUMO FINAL")
-    print('='*50)
-    
-    for name, success in results:
-        status = "✅" if success else "❌"
-        print(f"{status} {name}")
+    print("="*80)
     
     passed = sum(1 for _, success in results if success)
     total = len(results)
     
-    print(f"\n🎯 Total: {passed}/{total} testes passaram")
+    for test_name, success in results:
+        status = "✅ PASSOU" if success else "❌ FALHOU"
+        print(f"{test_name:.<50} {status}")
+    
+    success_rate = (passed / total * 100) if total > 0 else 0
+    print(f"\n🎯 RESULTADO: {passed}/{total} testes passaram ({success_rate:.1f}%)")
     
     if passed == total:
-        print("🎉 Todos os testes passaram!")
+        print("🎉 TODOS OS TESTES PASSARAM!")
         return 0
     else:
-        print("⚠️  Alguns testes falharam - verifique configurações")
+        print(f"⚠️  {total - passed} TESTE(S) FALHARAM")
         return 1
 
 if __name__ == "__main__":

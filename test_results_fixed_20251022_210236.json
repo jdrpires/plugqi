@@ -1,0 +1,147 @@
+{
+  "results": {
+    "account_opening": {
+      "passed": 0,
+      "failed": 3,
+      "errors": [
+        "Reserva conta 1: [QiTechError] 401 - Falha na chamada à QiTech",
+        "Reserva conta 2: [QiTechError] 401 - Falha na chamada à QiTech",
+        "Reserva conta 3: [QiTechError] 401 - Falha na chamada à QiTech"
+      ]
+    },
+    "boletos": {
+      "passed": 4,
+      "failed": 0,
+      "errors": []
+    },
+    "bolepix": {
+      "passed": 5,
+      "failed": 0,
+      "errors": []
+    },
+    "pix": {
+      "passed": 5,
+      "failed": 0,
+      "errors": []
+    },
+    "payments": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "credit": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "negative_tests": {
+      "passed": 3,
+      "failed": 0,
+      "errors": []
+    },
+    "exploratory": {
+      "passed": 3,
+      "failed": 0,
+      "errors": []
+    }
+  },
+  "test_data": {
+    "accounts_created": [],
+    "boletos_created": [
+      {
+        "bank_slip_key": "7767c2b3-c1c6-49aa-962d-55c4c4cc357d",
+        "amount": 150.75,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "58167e1a-0673-4972-ab5b-677dcc851fc7",
+        "amount": 5000.0,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "ce061af8-a772-4517-827e-5aae42c7eecf",
+        "amount": 10.5,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "7a055cca-a599-484d-a22d-fb464214adbe",
+        "amount": 1000.0,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "amount": 937.86,
+        "pix_key": "65322181032",
+        "status": "mock_validated",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "amount": 78.07,
+        "pix_key": "65322181032",
+        "status": "mock_validated",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "amount": 715.59,
+        "pix_key": "65322181032",
+        "status": "mock_validated",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "amount": 492.22,
+        "pix_key": "65322181032",
+        "status": "mock_validated",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "amount": 454.03,
+        "pix_key": "65322181032",
+        "status": "mock_validated",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      }
+    ],
+    "pix_transactions": [
+      {
+        "amount": 9.1,
+        "pix_key": "65322181032",
+        "status": "sent",
+        "pix_transfer_key": "0b2a969f-1abb-402d-b6bb-aecbc14946d0",
+        "end_to_end_id": "E32402502202510230002bo8X1h3jBy6"
+      },
+      {
+        "amount": 0.61,
+        "pix_key": "22156083070",
+        "status": "sent",
+        "pix_transfer_key": "501c6adc-289e-4844-819c-dc6053e43405",
+        "end_to_end_id": "E32402502202510230002WdLfItr5ule"
+      },
+      {
+        "amount": 5.2,
+        "pix_key": "96969879003",
+        "status": "sent",
+        "pix_transfer_key": "872a0d4a-a51e-4ce9-a274-fcfd37556026",
+        "end_to_end_id": "E32402502202510230002KMPb086UC7t"
+      },
+      {
+        "amount": 8.59,
+        "pix_key": "61295118092",
+        "status": "sent",
+        "pix_transfer_key": "ca07c5e7-6d54-4d2a-a967-e15d2621e665",
+        "end_to_end_id": "E32402502202510230002EXpKfo7yxD7"
+      },
+      {
+        "amount": 4.8,
+        "pix_key": "52720072800",
+        "status": "sent",
+        "pix_transfer_key": "bc05f2fc-d7d7-4c0a-9446-bae5e5c370ae",
+        "end_to_end_id": "E32402502202510230002dGdQ0TCw745"
+      }
+    ],
+    "execution_time": 30.79052972793579
+  },
+  "timestamp": "2025-10-22T21:02:36.262104",
+  "note": "Versão corrigida - adaptada às limitações do sandbox"
+}

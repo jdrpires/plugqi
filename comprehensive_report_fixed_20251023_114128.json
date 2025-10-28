@@ -1,0 +1,265 @@
+{
+  "execution_info": {
+    "start_time": "2025-10-23T11:39:45.061251",
+    "end_time": "2025-10-23T11:41:28.671197",
+    "duration_seconds": 103.609946,
+    "total_operations": 22,
+    "success_rate": 86.36363636363636
+  },
+  "accounts": {
+    "created": [],
+    "failed": [
+      {
+        "index": 1,
+        "company": "Empresa Teste 1 Ltda",
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-23T11:39:45.409432"
+      },
+      {
+        "index": 2,
+        "company": "Empresa Teste 2 Ltda",
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-23T11:39:45.604823"
+      },
+      {
+        "index": 3,
+        "company": "Empresa Teste 3 Ltda",
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-23T11:39:45.891331"
+      }
+    ],
+    "total": 3
+  },
+  "boletos": {
+    "created": [
+      {
+        "index": 1,
+        "type": "PF_Basico",
+        "amount": 150.75,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "85c4bf91-7907-4eb5-8af9-704ba67aa34d",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:46.421566"
+      },
+      {
+        "index": 2,
+        "type": "Valor_Alto",
+        "amount": 5000.0,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "786887cf-407b-486f-af91-74602b6706ce",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:47.422755"
+      },
+      {
+        "index": 3,
+        "type": "Valor_Baixo",
+        "amount": 10.5,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "fd91df10-5a68-4028-8be5-d33e6652ce10",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:48.505788"
+      },
+      {
+        "index": 4,
+        "type": "Vencimento_Longo",
+        "amount": 1000.0,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "97d6e450-3cb4-443b-97e8-f9b6fe5a442e",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:49.623337"
+      }
+    ],
+    "failed": [],
+    "total": 4
+  },
+  "bolepix": {
+    "created": [
+      {
+        "index": 1,
+        "amount": 708.68,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "35022675-fed7-4ee4-9ae2-6ec232f54e35",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:51.298620"
+      },
+      {
+        "index": 2,
+        "amount": 414.62,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "e4cf1391-ef2b-4446-afdf-0db6dd3381c1",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:52.796722"
+      },
+      {
+        "index": 3,
+        "amount": 891.12,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "e81bb487-7860-4479-b3e7-8304bcd6f3a8",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:54.252462"
+      },
+      {
+        "index": 4,
+        "amount": 603.14,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "549079da-a5c2-455b-a5d7-613cf8bd6577",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:55.681147"
+      },
+      {
+        "index": 5,
+        "amount": 960.57,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "b1f4e58c-15dd-4fac-b351-10cf59284653",
+        "status": "accepted",
+        "created_at": "2025-10-23T11:39:57.027518"
+      }
+    ],
+    "failed": [],
+    "total": 5
+  },
+  "pix_transactions": {
+    "created": [
+      {
+        "index": 1,
+        "amount": 1.03,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "003ddec2-6a2a-495a-bd7f-ba29d925c78e",
+        "end_to_end_id": "E32402502202510231439JzCTqK4KBEr",
+        "created_at": "2025-10-23T11:39:59.827053"
+      },
+      {
+        "index": 2,
+        "amount": 27.47,
+        "pix_key": "11646288874",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "1fe7a1bf-fde7-4c2b-aedc-f89414841763",
+        "end_to_end_id": "E32402502202510231440grOom7kVCZ6",
+        "created_at": "2025-10-23T11:40:20.188524"
+      },
+      {
+        "index": 3,
+        "amount": 21.24,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "874d47be-53c3-4b0a-8723-8fc71d59a71f",
+        "end_to_end_id": "E32402502202510231440KrI0mSAWCJg",
+        "created_at": "2025-10-23T11:40:23.160164"
+      },
+      {
+        "index": 4,
+        "amount": 45.16,
+        "pix_key": "88253032978",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "1508fb1f-4240-4124-8db3-a87cf5f7a954",
+        "end_to_end_id": "E32402502202510231440E3RTqqbTWZy",
+        "created_at": "2025-10-23T11:40:42.873975"
+      },
+      {
+        "index": 5,
+        "amount": 11.95,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "3185ef6e-b99a-4eae-aa9a-32569c19c1b5",
+        "end_to_end_id": "E324025022025102314406BzHORghzHJ",
+        "created_at": "2025-10-23T11:40:46.151725"
+      },
+      {
+        "index": 6,
+        "amount": 35.29,
+        "pix_key": "24182533410",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "a1b2c6d4-2cb9-4cc1-bbb4-8a6f649e0e02",
+        "end_to_end_id": "E32402502202510231440mh2wUMjJ4Va",
+        "created_at": "2025-10-23T11:40:49.074442"
+      },
+      {
+        "index": 7,
+        "amount": 25.74,
+        "pix_key": "61295118092",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "bf9b1f00-ef80-4b3d-b336-d9f41be1a0df",
+        "end_to_end_id": "E32402502202510231440J03HGLlU3Ax",
+        "created_at": "2025-10-23T11:40:53.067379"
+      },
+      {
+        "index": 8,
+        "amount": 39.7,
+        "pix_key": "66702118805",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "7eb22b66-ea09-43b3-b870-aefc85c33afa",
+        "end_to_end_id": "E32402502202510231440MOxYSrck0Dg",
+        "created_at": "2025-10-23T11:40:55.770742"
+      },
+      {
+        "index": 9,
+        "amount": 6.7,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "d4a9e9ae-66da-4660-8687-05ff50fef042",
+        "end_to_end_id": "E32402502202510231440WgV9rC5hJAb",
+        "created_at": "2025-10-23T11:40:59.400359"
+      },
+      {
+        "index": 10,
+        "amount": 13.38,
+        "pix_key": "88253032978",
+        "pix_type": "cpf",
+        "status": "sent",
+        "pix_transfer_key": "2ae94194-76f0-4ba9-9190-f205a3ade220",
+        "end_to_end_id": "E32402502202510231441zVSnldoitjf",
+        "created_at": "2025-10-23T11:41:27.665719"
+      }
+    ],
+    "failed": [],
+    "total": 10
+  },
+  "stress_test_results": {
+    "boleto_creation_speed": {
+      "count": 50,
+      "duration": 0.0006759166717529297,
+      "rate_per_second": 73973.61552028218
+    },
+    "pix_validation_speed": {
+      "count": 200,
+      "duration": 0.00028514862060546875,
+      "rate_per_second": 701388.6287625418
+    }
+  },
+  "performance_metrics": {
+    "accounts_success_rate": 0.0,
+    "accounts_failure_rate": 100.0,
+    "boletos_success_rate": 100.0,
+    "boletos_failure_rate": 0.0,
+    "bolepix_success_rate": 100.0,
+    "bolepix_failure_rate": 0.0,
+    "pix_transactions_success_rate": 100.0,
+    "pix_transactions_failure_rate": 0.0,
+    "amount_distribution": {
+      "min": 1.03,
+      "max": 5000.0,
+      "avg": 524.581052631579,
+      "total": 9967.04,
+      "count": 19
+    }
+  },
+  "note": "Versão corrigida - adaptada às limitações do sandbox"
+}

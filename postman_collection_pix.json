@@ -1,0 +1,315 @@
+{
+	"name": "🔄 PIX",
+	"item": [
+		{
+			"name": "Enviar PIX por Chave",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has transaction_key\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('transaction_key');",
+							"    pm.collectionVariables.set('last_pix_transaction', jsonData.transaction_key);",
+							"});",
+							"",
+							"pm.test(\"Response has status\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('status');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate unique end to end ID",
+							"pm.collectionVariables.set('end_to_end_id', 'E' + Date.now().toString());",
+							"",
+							"// Set random PIX key from mock data",
+							"const pixKeys = [",
+							"    'joao.silva@email.com',",
+							"    '11999887766',",
+							"    '12345678901',",
+							"    '183466bd-6383-4517-96f2-48f4f1488692'",
+							"];",
+							"const randomKey = pixKeys[Math.floor(Math.random() * pixKeys.length)];",
+							"pm.collectionVariables.set('pix_key_destination', randomKey);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"end_to_end_id\": \"{{end_to_end_id}}\",\n    \"amount\": 50.00,\n    \"pix_key\": \"{{pix_key_destination}}\",\n    \"description\": \"Pagamento via PIX - Teste QA\",\n    \"destination_data\": {\n        \"name\": \"Destinatário Teste\",\n        \"document_number\": \"12345678901\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/pix_transfer",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"pix_transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Transação PIX",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has transaction data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('transaction_key');",
+							"    pm.expect(jsonData).to.have.property('status');",
+							"    pm.expect(jsonData).to.have.property('amount');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/pix_transfer/{{last_pix_transaction}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"pix_transfer",
+						"{{last_pix_transaction}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Transações PIX",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});",
+							"",
+							"pm.test(\"Array contains transaction objects\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    if (jsonData.length > 0) {",
+							"        pm.expect(jsonData[0]).to.have.property('transaction_key');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/pix_transfer",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"pix_transfer"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"disabled": true
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar QR Code PIX Estático",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has QR code data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('qr_code');",
+							"    pm.expect(jsonData).to.have.property('copy_paste');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate unique transaction ID",
+							"pm.collectionVariables.set('qr_transaction_id', 'QR' + Date.now().toString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"transaction_id\": \"{{qr_transaction_id}}\",\n    \"amount\": 75.50,\n    \"description\": \"Pagamento QR Code - Teste QA\",\n    \"pix_key\": \"183466bd-6383-4517-96f2-48f4f1488692\",\n    \"recipient_data\": {\n        \"name\": \"Loja Teste\",\n        \"document_number\": \"12345678000195\",\n        \"city\": \"São Paulo\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/pix_qr_code",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"pix_qr_code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar Chave PIX",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has validation result\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('valid');",
+							"});",
+							"",
+							"pm.test(\"Response has owner data if valid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    if (jsonData.valid) {",
+							"        pm.expect(jsonData).to.have.property('owner_name');",
+							"        pm.expect(jsonData).to.have.property('owner_document');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/pix_key/validation?pix_key=183466bd-6383-4517-96f2-48f4f1488692",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pix_key",
+						"validation"
+					],
+					"query": [
+						{
+							"key": "pix_key",
+							"value": "183466bd-6383-4517-96f2-48f4f1488692"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

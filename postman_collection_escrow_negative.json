@@ -1,0 +1,269 @@
+{
+	"name": "🏦 Conta Escrow",
+	"item": [
+		{
+			"name": "Reservar Conta PJ (BLOQUEADO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Expected 401 - Endpoint not allowed\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response contains error code GDF000014\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql('GDF000014');",
+							"});",
+							"",
+							"pm.test(\"Error message mentions endpoint restriction\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.description).to.include('not allowed');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate unique document and contract keys",
+							"pm.collectionVariables.set('company_cnpj', '12345678000195');",
+							"pm.collectionVariables.set('document_key', pm.variables.replaceIn('{{$guid}}'));",
+							"pm.collectionVariables.set('facial_recognition_key', pm.variables.replaceIn('{{$guid}}'));",
+							"pm.collectionVariables.set('session_id', pm.variables.replaceIn('{{$guid}}'));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_owner\": {\n        \"address\": {\n            \"street\": \"Rua Teste\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"postal_code\": \"01234567\"\n        },\n        \"cnae_code\": \"6201501\",\n        \"company_document_number\": \"{{company_cnpj}}\",\n        \"company_type\": \"ltda\",\n        \"email\": \"empresa@teste.com\",\n        \"foundation_date\": \"2020-01-01\",\n        \"name\": \"Empresa Teste LTDA\",\n        \"person_type\": \"legal\",\n        \"phone\": {\n            \"country_code\": \"55\",\n            \"area_code\": \"11\",\n            \"number\": \"999999999\"\n        },\n        \"trading_name\": \"Empresa Teste\",\n        \"company_representatives\": [\n            {\n                \"name\": \"João Silva\",\n                \"address\": {\n                    \"street\": \"Rua Teste\",\n                    \"number\": \"123\",\n                    \"neighborhood\": \"Centro\",\n                    \"city\": \"São Paulo\",\n                    \"state\": \"SP\",\n                    \"postal_code\": \"01234567\"\n                },\n                \"email\": \"joao@teste.com\",\n                \"birth_date\": \"1990-01-01\",\n                \"individual_document_number\": \"12345678901\",\n                \"is_pep\": false,\n                \"marital_status\": \"single\",\n                \"mother_name\": \"Maria Silva\",\n                \"nationality\": \"Brasileira\",\n                \"person_type\": \"natural\",\n                \"phone\": {\n                    \"country_code\": \"55\",\n                    \"area_code\": \"11\",\n                    \"number\": \"999999999\"\n                }\n            }\n        ]\n    },\n    \"signed_contract\": {\n        \"document_key\": \"{{document_key}}\",\n        \"signatures\": [\n            {\n                \"authenticity\": {\n                    \"timestamp\": \"2024-10-23T12:00:00Z\",\n                    \"facial_recognition_key\": \"{{facial_recognition_key}}\",\n                    \"session_id\": \"{{session_id}}\"\n                },\n                \"signer\": {\n                    \"name\": \"João Silva\",\n                    \"email\": \"joao@teste.com\",\n                    \"phone\": {\n                        \"country_code\": \"55\",\n                        \"area_code\": \"11\",\n                        \"number\": \"999999999\"\n                    },\n                    \"document_number\": \"12345678901\"\n                },\n                \"authentication_type\": \"opt-in\"\n            }\n        ]\n    },\n    \"destinations\": [\n        {\n            \"account_branch\": \"0001\",\n            \"account_number\": \"123456\",\n            \"account_digit\": \"7\",\n            \"document_number\": \"12345678901\",\n            \"name\": \"João Silva\",\n            \"ispb_number\": \"60746948\",\n            \"financial_institution_code_number\": \"341\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account_request/escrow",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account_request",
+						"escrow"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+},
+{
+	"name": "❌ Testes Negativos",
+	"item": [
+		{
+			"name": "Boleto - Dados Inválidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 or 422\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+							"});",
+							"",
+							"pm.test(\"Response contains error message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('title');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_control_key\": \"\",\n    \"amount\": -100,\n    \"expiration\": \"2020-01-01\",\n    \"payer_data\": {\n        \"name\": \"\",\n        \"document_number\": \"invalid_cpf\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto",
+						"{{requester_profile_key}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PIX - Chave Inválida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 or 422\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+							"});",
+							"",
+							"pm.test(\"Response contains error about invalid PIX key\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.description || jsonData.message).to.include('pix');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"end_to_end_id\": \"E123456789\",\n    \"amount\": 50.00,\n    \"pix_key\": \"chave_inexistente@invalid.com\",\n    \"description\": \"Teste PIX inválido\",\n    \"destination_data\": {\n        \"name\": \"Destinatário Inexistente\",\n        \"document_number\": \"00000000000\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/pix_transfer",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"pix_transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticação - Token Inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response contains authentication error\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title).to.include('Unauthenticated');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer invalid_token_here",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta - Recurso Inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains not found error\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title || jsonData.message).to.include('not found');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto/inexistent-boleto-key",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto",
+						"inexistent-boleto-key"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

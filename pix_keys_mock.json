@@ -1,0 +1,106 @@
+{
+  "caixa": {
+    "bank_code": "104",
+    "bank_name": "CAIXA ECONOMICA FEDERAL",
+    "ispb": "360305",
+    "keys": [
+      {"key": "+5568970000000", "type": "phone_number", "name": "Mock Person Name", "document": "65322181032"},
+      {"key": "d6e2d611-6c68-4f84-9be5-962ad2f2bcb6", "type": "random_key", "name": "Mock Person Name", "document": "61295118092"},
+      {"key": "61295118092", "type": "cpf", "name": "Mock Person Name", "document": "61295118092"},
+      {"key": "pix03@pix03.com", "type": "email", "name": "Mock Person Name", "document": "96969879003"},
+      {"key": "+5568911106520", "type": "phone_number", "name": "Mock Person Name", "document": "66702118805"},
+      {"key": "5e6ce02a-e0da-4d56-73b8-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "52720072800"},
+      {"key": "52720072800", "type": "cpf", "name": "Mock Person Name", "document": "52720072800"},
+      {"key": "pix10@pix10.com", "type": "email", "name": "Mock Person Name", "document": "24182533410"},
+      {"key": "pix33@pix33.com", "type": "email", "name": "Mock Person Name", "document": "56151446887"},
+      {"key": "88253032978", "type": "cpf", "name": "Mock Person Name", "document": "88253032978"}
+    ]
+  },
+  "itau": {
+    "bank_code": "341",
+    "bank_name": "ITAÚ UNIBANCO S.A.",
+    "ispb": "60701190",
+    "keys": [
+      {"key": "22156083070", "type": "cpf", "name": "Mock Person Name", "document": "22156083070"},
+      {"key": "96969879003", "type": "cpf", "name": "Mock Person Name", "document": "96969879003"},
+      {"key": "5e6ce06a-e0da-4d56-93b8-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "43135154025"},
+      {"key": "pix11@pix11.com", "type": "email", "name": "Mock Person Name", "document": "66702118805"},
+      {"key": "24182533410", "type": "cpf", "name": "Mock Person Name", "document": "24182533410"},
+      {"key": "pix07@pix07.com", "type": "email", "name": "Mock Person Name", "document": "11646288874"}
+    ]
+  },
+  "bradesco": {
+    "bank_code": "237",
+    "bank_name": "BCO BRADESCO S.A.",
+    "ispb": "60746948",
+    "keys": [
+      {"key": "65322181032", "type": "cpf", "name": "Mock Person Name", "document": "65322181032"},
+      {"key": "pix01@pix01.com", "type": "email", "name": "Mock Person Name", "document": "65322181032"},
+      {"key": "pix12@pix12.com", "type": "email", "name": "Mock Person Name", "document": "11085087824"},
+      {"key": "5e6ce08a-e0da-4d56-93b8-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "66702118805"},
+      {"key": "+5568911137576", "type": "phone_number", "name": "Mock Person Name", "document": "82104056080"}
+    ]
+  },
+  "santander": {
+    "bank_code": "33",
+    "bank_name": "BCO SANTANDER (BRASIL) S.A.",
+    "ispb": "90400888",
+    "keys": [
+      {"key": "5e6ce05a-e0da-4d56-93b8-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "42759960030"},
+      {"key": "34175131205", "type": "cpf", "name": "Mock Person Name", "document": "34175131205"},
+      {"key": "82104056080", "type": "cpf", "name": "Mock Person Name", "document": "82104056080"}
+    ]
+  },
+  "inter": {
+    "bank_code": "77",
+    "bank_name": "BANCO INTER",
+    "ispb": "416968",
+    "keys": [
+      {"key": "22156083070", "type": "cpf", "name": "Mock Person Name", "document": "22156083070"},
+      {"key": "pix13@pix13.com", "type": "email", "name": "Mock Person Name", "document": "43135154025"},
+      {"key": "66702118805", "type": "cpf", "name": "Mock Person Name", "document": "66702118805"},
+      {"key": "5e6ce05a-e0da-4d56-93b7-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "24182533410"},
+      {"key": "+5568911168384", "type": "phone_number", "name": "Mock Person Name", "document": "17413005255"},
+      {"key": "pix06@pix06.com", "type": "email", "name": "Mock Person Name", "document": "81035632691"},
+      {"key": "pix31@pix31.com", "type": "email", "name": "Mock Person Name", "document": "55125236780"},
+      {"key": "8501216b-d676-4927-be65-060d3d4394fb", "type": "random_key", "name": "Mocked Enterprise S.A", "document": "40008675000100"},
+      {"key": "pix_key@mockenterprise.com.br", "type": "email", "name": "Mocked Enterprise S.A", "document": "40008675000100"},
+      {"key": "40008675000100", "type": "cnpj", "name": "Mocked Enterprise S.A", "document": "40008675000100"},
+      {"key": "+5568956720123", "type": "phone_number", "name": "Mocked Enterprise S.A", "document": "40008675000100"}
+    ]
+  },
+  "nubank": {
+    "bank_code": "260",
+    "bank_name": "NU PAGAMENTOS - IP",
+    "ispb": "18236120",
+    "keys": [
+      {"key": "pix04@pix04.com", "type": "email", "name": "Mock Person Name", "document": "69017362073"},
+      {"key": "pix09@pix09.com", "type": "email", "name": "Mock Person Name", "document": "34175131205"},
+      {"key": "5e6ce01a-e0da-4d56-93b8-44f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "17413005255"},
+      {"key": "+5568911186420", "type": "phone_number", "name": "Mock Person Name", "document": "81035632691"},
+      {"key": "pix32@pix32.com", "type": "email", "name": "Mock Person Name", "document": "56151446887"}
+    ]
+  },
+  "c6": {
+    "bank_code": "336",
+    "bank_name": "BCO C6 S.A.",
+    "ispb": "31872495",
+    "keys": [
+      {"key": "dbbf965d-677c-49ff-b9da-5131da1505f3", "type": "random_key", "name": "Mock Person Name", "document": "65322181032"},
+      {"key": "5e6ce07a-e0da-4d56-93b8-84f118b4f371", "type": "random_key", "name": "Mock Person Name", "document": "11085087824"},
+      {"key": "11646288874", "type": "cpf", "name": "Mock Person Name", "document": "11646288874"}
+    ]
+  },
+  "safra": {
+    "bank_code": "422",
+    "bank_name": "BCO SAFRA S.A.",
+    "ispb": "58160789",
+    "keys": [
+      {"key": "pix02@pix02.com", "type": "email", "name": "Mock Person Name", "document": "69017362073"},
+      {"key": "pix08@pix08.com", "type": "email", "name": "Mock Person Name", "document": "34175131205"},
+      {"key": "+5568911106070", "type": "phone_number", "name": "Mock Person Name", "document": "11646288874"},
+      {"key": "53465252110", "type": "cpf", "name": "Mock Person Name", "document": "53465252110"},
+      {"key": "+5568911122488", "type": "phone_number", "name": "Mock Person Name", "document": "10632271"}
+    ]
+  }
+}

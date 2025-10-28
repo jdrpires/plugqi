@@ -4,6 +4,8 @@ from connectors.boleto import BoletoConnector
 from connectors.boleto_payment import BoletoPaymentConnector
 from connectors.pix import PixConnector
 from connectors.account_opening import AccountOpeningConnector
+from connectors.document_upload import DocumentUploadConnector
+from connectors.financial_institution import FinancialInstitutionConnector
 from qitech_client import QiTechClient, QiTechError
 
 
@@ -17,6 +19,8 @@ class PlugQi:
         self.boleto_payment = BoletoPaymentConnector(self.client)
         self.pix = PixConnector(self.client)
         self.account_opening = AccountOpeningConnector(self.client)
+        self.document_upload = DocumentUploadConnector(self.client)
+        self.financial_institution = FinancialInstitutionConnector(self.client)
 
     def health_check(self) -> bool:
         """

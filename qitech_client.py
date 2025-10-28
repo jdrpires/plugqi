@@ -139,6 +139,7 @@ class QiTechClient:
         params: Optional[Dict[str, Any]] = None,
         files: Optional[Dict[str, Tuple[str, bytes, str]]] = None,
         timeout: int = DEFAULT_TIMEOUT,
+        file_md5: Optional[str] = None,
     ) -> Dict[str, Any]:
         method = method.upper()
         endpoint = endpoint if endpoint.startswith("/") else f"/{endpoint}"
@@ -155,12 +156,16 @@ class QiTechClient:
         content_type_json = False
 
         if files:
-            first_key = next(iter(files))
-            file_tuple = files[first_key]
-            file_bytes = b""
-            if isinstance(file_tuple, (tuple, list)) and len(file_tuple) >= 2 and isinstance(file_tuple[1], (bytes, bytearray)):
-                file_bytes = file_tuple[1]  # type: ignore
-            pmd5 = self._payload_md5_bytes(file_bytes)
+            # Para upload de arquivos, usar MD5 fornecido ou calcular do arquivo
+            if file_md5:
+                pmd5 = file_md5
+            else:
+                first_key = next(iter(files))
+                file_tuple = files[first_key]
+                file_bytes = b""
+                if isinstance(file_tuple, (tuple, list)) and len(file_tuple) >= 2 and isinstance(file_tuple[1], (bytes, bytearray)):
+                    file_bytes = file_tuple[1]  # type: ignore
+                pmd5 = self._payload_md5_bytes(file_bytes)
         else:
             if method in ("GET", "DELETE"):
                 encoded_body = b""
@@ -215,6 +220,9 @@ class QiTechClient:
     def post(self, endpoint: str, json_body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         return self._request("POST", endpoint, json_body=json_body)
 
+    def patch(self, endpoint: str, json_body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        return self._request("PATCH", endpoint, json_body=json_body)
+
     def delete(self, endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         return self._request("DELETE", endpoint, params=params)
 
@@ -223,5 +231,9 @@ class QiTechClient:
         endpoint: str,
         files: Dict[str, Tuple[str, bytes, str]],
         params: Optional[Dict[str, Any]] = None,
+        md5_hash: Optional[str] = None
     ) -> Dict[str, Any]:
-        return self._request("POST", endpoint, files=files, params=params)
+        """
+        Upload de arquivo com MD5 específico para autenticação
+        """
+        return self._request("POST", endpoint, files=files, params=params, file_md5=md5_hash)

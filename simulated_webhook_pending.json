@@ -1,0 +1,15 @@
+{
+  "key": "218d7204-5341-405f-a8d3-30b7bc6c8634",
+  "data": {
+    "account_info": {
+      "account_branch": "0001",
+      "account_digit": "5",
+      "account_number": "2690192"
+    },
+    "account_request_key": "218d7204-5341-405f-a8d3-30b7bc6c8634"
+  },
+  "status": "pending_additional_data",
+  "webhook_type": "account_request.status_change",
+  "event_datetime": "2024-10-23T22:15:00.000000",
+  "request_control_key": "simulated-webhook-123"
+}

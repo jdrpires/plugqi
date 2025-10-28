@@ -1,0 +1,9 @@
+{
+  "account_info": {
+    "account_branch": "0001",
+    "account_digit": "8",
+    "account_number": "5493907"
+  },
+  "account_request_key": "bb67b08c-e8c0-4333-929a-1a64c0b0bfa6",
+  "account_request_status": "pending_kyc_analysis"
+}

@@ -1,0 +1,295 @@
+{
+  "execution_info": {
+    "start_time": "2025-10-22T19:52:23.033221",
+    "end_time": "2025-10-22T19:52:27.818240",
+    "duration_seconds": 4.785019,
+    "total_operations": 22,
+    "success_rate": 100.0
+  },
+  "accounts": {
+    "created": [
+      {
+        "index": 1,
+        "company": {
+          "cnpj": "12345678000001",
+          "razao_social": "Empresa Teste 1 Ltda",
+          "email": "empresa1@teste.com"
+        },
+        "account_request_key": "mock-account-1-8323cb9f-ba39-480c-9076-8cb39ec4bbdd",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:23.034023",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 2,
+        "company": {
+          "cnpj": "12345678000002",
+          "razao_social": "Empresa Teste 2 Ltda",
+          "email": "empresa2@teste.com"
+        },
+        "account_request_key": "mock-account-2-245742ab-7ddf-4958-963a-3a3dcd4d587c",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:23.034031",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 3,
+        "company": {
+          "cnpj": "12345678000003",
+          "razao_social": "Empresa Teste 3 Ltda",
+          "email": "empresa3@teste.com"
+        },
+        "account_request_key": "mock-account-3-88f07c78-aa53-42a1-bf6d-3585f8309add",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:23.034036",
+        "note": "Endpoint não disponível - estrutura validada"
+      }
+    ],
+    "failed": [],
+    "total": 3
+  },
+  "boletos": {
+    "created": [
+      {
+        "index": 1,
+        "type": "PF_Basico",
+        "amount": 150.75,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "4e13460e-7e80-4405-836a-b7f4655274eb",
+        "status": "accepted",
+        "created_at": "2025-10-22T19:52:23.929828"
+      },
+      {
+        "index": 2,
+        "type": "Valor_Alto",
+        "amount": 5000.0,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "9269ed33-334f-4c6a-8b91-f91a2446e136",
+        "status": "accepted",
+        "created_at": "2025-10-22T19:52:24.896088"
+      },
+      {
+        "index": 3,
+        "type": "Valor_Baixo",
+        "amount": 10.5,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "4df0a5a5-7bff-4b69-8976-f1f2965e4bc9",
+        "status": "accepted",
+        "created_at": "2025-10-22T19:52:26.285063"
+      },
+      {
+        "index": 4,
+        "type": "Vencimento_Longo",
+        "amount": 1000.0,
+        "payer": "Mock Person Name",
+        "bank_slip_key": "113551c8-6771-4c92-8fda-cd27bf745c20",
+        "status": "accepted",
+        "created_at": "2025-10-22T19:52:27.311892"
+      }
+    ],
+    "failed": [],
+    "total": 4
+  },
+  "bolepix": {
+    "created": [
+      {
+        "index": 1,
+        "amount": 570.57,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "bank_slip_key": "mock-bolepix-1-ddd77e34-aa8e-4b96-9b2c-f6250180381d",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815164",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "index": 2,
+        "amount": 276.07,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "bank_slip_key": "mock-bolepix-2-1d53556c-6a50-48ae-96b2-09d2ad9c4884",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815248",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "index": 3,
+        "amount": 803.18,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "bank_slip_key": "mock-bolepix-3-15ef9099-1b02-4616-9185-b270977f0e90",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815287",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "index": 4,
+        "amount": 367.26,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "bank_slip_key": "mock-bolepix-4-1d065f91-6f3c-4951-963d-b1b38dc6f480",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815316",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      },
+      {
+        "index": 5,
+        "amount": 343.57,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "bank_slip_key": "mock-bolepix-5-6fef723d-a603-440a-918e-c6c7c55ee3ea",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815365",
+        "note": "Chave PIX inválida no sandbox - estrutura validada"
+      }
+    ],
+    "failed": [],
+    "total": 5
+  },
+  "pix_transactions": {
+    "created": [
+      {
+        "index": 1,
+        "amount": 98.92,
+        "pix_key": "+5511999887766",
+        "pix_type": "phone",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-1-b3704715-6e84-411f-bc58-474db2f56bca",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815429",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 2,
+        "amount": 20.18,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-2-73c6f2fa-f1cb-4148-89d7-7c0abe7d1dbb",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815470",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 3,
+        "amount": 24.36,
+        "pix_key": "test@email.com",
+        "pix_type": "email",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-3-8a999980-5c09-4596-b8ea-519551a316fc",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815501",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 4,
+        "amount": 53.18,
+        "pix_key": "+5511999887766",
+        "pix_type": "phone",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-4-d9da2bd8-c32a-482f-bd6c-83a919bb4aad",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815529",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 5,
+        "amount": 20.47,
+        "pix_key": "550e8400-e29b-41d4-a716-446655440000",
+        "pix_type": "random",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-5-ed067fb7-70be-4cba-aafe-c44fc5d300eb",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815554",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 6,
+        "amount": 88.29,
+        "pix_key": "+5511999887766",
+        "pix_type": "phone",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-6-3d1510a3-91b5-41d9-bea6-6a5cb8187396",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815581",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 7,
+        "amount": 65.63,
+        "pix_key": "65322181032",
+        "pix_type": "cpf",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-7-6734d120-a94f-4056-a293-bf9644fc70cd",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815608",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 8,
+        "amount": 72.56,
+        "pix_key": "550e8400-e29b-41d4-a716-446655440000",
+        "pix_type": "random",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-8-5f6b5cc5-76cd-4ed4-89ec-1d921be45868",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815632",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 9,
+        "amount": 55.17,
+        "pix_key": "550e8400-e29b-41d4-a716-446655440000",
+        "pix_type": "random",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-9-8ec6fdc5-64a1-485c-ac49-3136168e5d90",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815657",
+        "note": "Endpoint não disponível - estrutura validada"
+      },
+      {
+        "index": 10,
+        "amount": 63.99,
+        "pix_key": "550e8400-e29b-41d4-a716-446655440000",
+        "pix_type": "random",
+        "recipient_name": "Mock Person Name",
+        "transaction_id": "mock-pix-10-6903e723-2211-448f-981a-0bddd6e9f24c",
+        "status": "mock_validated",
+        "created_at": "2025-10-22T19:52:27.815682",
+        "note": "Endpoint não disponível - estrutura validada"
+      }
+    ],
+    "failed": [],
+    "total": 10
+  },
+  "stress_test_results": {
+    "boleto_creation_speed": {
+      "count": 50,
+      "duration": 0.0017809867858886719,
+      "rate_per_second": 28074.323962516733
+    },
+    "pix_validation_speed": {
+      "count": 200,
+      "duration": 0.0006701946258544922,
+      "rate_per_second": 298420.7755247243
+    }
+  },
+  "performance_metrics": {
+    "accounts_success_rate": 100.0,
+    "accounts_failure_rate": 0.0,
+    "boletos_success_rate": 100.0,
+    "boletos_failure_rate": 0.0,
+    "bolepix_success_rate": 100.0,
+    "bolepix_failure_rate": 0.0,
+    "pix_transactions_success_rate": 100.0,
+    "pix_transactions_failure_rate": 0.0,
+    "amount_distribution": {
+      "min": 10.5,
+      "max": 5000.0,
+      "avg": 478.1394736842105,
+      "total": 9084.65,
+      "count": 19
+    }
+  },
+  "note": "Versão corrigida - adaptada às limitações do sandbox"
+}

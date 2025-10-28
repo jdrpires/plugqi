@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "plugqi-qitech-collection",
+		"name": "PlugQi - QiTech API Collection",
+		"description": "Collection completa para testes QA do SDK PlugQi com API QiTech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "plugqi-team"
+	},
+	"item": [
+		{
+			"name": "🔧 Health Check & Auth",
+			"item": [
+				{
+					"name": "Health Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has status field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"});",
+									"",
+									"pm.test(\"Service is healthy\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql('ok');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-generate JWT token if needed",
+					"// This would be implemented based on your JWT generation logic"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api-auth.sandbox.qitech.app",
+			"type": "string"
+		},
+		{
+			"key": "client_key",
+			"value": "{{QITECH_CLIENT_KEY}}",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "account_key",
+			"value": "{{ACCOUNT_KEY}}",
+			"type": "string"
+		},
+		{
+			"key": "requester_profile_key",
+			"value": "{{REQUESTER_PROFILE_KEY}}",
+			"type": "string"
+		}
+	]
+}

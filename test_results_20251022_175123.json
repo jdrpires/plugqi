@@ -1,0 +1,80 @@
+{
+  "results": {
+    "account_opening": {
+      "passed": 0,
+      "failed": 3,
+      "errors": [
+        "Reserva conta 1: QiTech Error: 401",
+        "Reserva conta 2: QiTech Error: 401",
+        "Reserva conta 3: QiTech Error: 401"
+      ]
+    },
+    "boletos": {
+      "passed": 0,
+      "failed": 5,
+      "errors": [
+        "Pessoa Física Básico: QiTech Error: 404",
+        "Pessoa Jurídica: QiTech Error: 400",
+        "Valor Alto: QiTech Error: 400",
+        "Valor Baixo: QiTech Error: 404",
+        "Vencimento Longo: QiTech Error: 404"
+      ]
+    },
+    "bolepix": {
+      "passed": 0,
+      "failed": 5,
+      "errors": [
+        "BolePix 1: QiTech Error: 404",
+        "BolePix 2: QiTech Error: 400",
+        "BolePix 3: QiTech Error: 400",
+        "BolePix 4: QiTech Error: 400",
+        "BolePix 5: QiTech Error: 400"
+      ]
+    },
+    "pix": {
+      "passed": 0,
+      "failed": 10,
+      "errors": [
+        "PIX 1: QiTech Error: 404",
+        "PIX 2: QiTech Error: 404",
+        "PIX 3: QiTech Error: 404",
+        "PIX 4: QiTech Error: 404",
+        "PIX 5: QiTech Error: 404",
+        "PIX 6: QiTech Error: 404",
+        "PIX 7: QiTech Error: 404",
+        "PIX 8: QiTech Error: 404",
+        "PIX 9: QiTech Error: 404",
+        "PIX 10: QiTech Error: 404"
+      ]
+    },
+    "payments": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "credit": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "negative_tests": {
+      "passed": 2,
+      "failed": 1,
+      "errors": [
+        "CPF inválido aceito: CPF inválido foi aceito"
+      ]
+    },
+    "exploratory": {
+      "passed": 3,
+      "failed": 0,
+      "errors": []
+    }
+  },
+  "test_data": {
+    "accounts_created": [],
+    "boletos_created": [],
+    "pix_transactions": [],
+    "execution_time": 8.83234715461731
+  },
+  "timestamp": "2025-10-22T17:51:23.724516"
+}

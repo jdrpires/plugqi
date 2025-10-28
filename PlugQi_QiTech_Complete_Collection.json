@@ -1,0 +1,641 @@
+{
+	"info": {
+		"_postman_id": "plugqi-qitech-complete-collection",
+		"name": "🔌 PlugQi - QiTech API Complete Collection",
+		"description": "Collection completa para testes QA do SDK PlugQi com API QiTech\n\n## 📋 Como Usar\n\n### 1. Configuração Inicial\n- Configure as variáveis de ambiente:\n  - `QITECH_CLIENT_KEY`: Sua chave de cliente QiTech\n  - `ACCOUNT_KEY`: Chave da conta para testes\n  - `REQUESTER_PROFILE_KEY`: Chave do perfil solicitante\n\n### 2. Autenticação\n- O JWT token deve ser gerado automaticamente\n- Execute primeiro o Health Check para validar conectividade\n\n### 3. Ordem de Execução Sugerida\n1. Health Check & Auth\n2. Boletos (criar, consultar, listar)\n3. PIX (enviar, consultar, QR codes)\n4. Testes Negativos\n5. Conta Escrow (atualmente bloqueada)\n\n### 4. Variáveis Dinâmicas\n- IDs únicos são gerados automaticamente\n- Chaves PIX são selecionadas aleatoriamente\n- Datas são calculadas dinamicamente\n\n## 🎯 Cobertura de Testes\n- ✅ Boletos: Criação, consulta, listagem, BolePix\n- ✅ PIX: Transferências, QR codes, validação de chaves\n- ✅ Testes Negativos: Dados inválidos, autenticação, recursos inexistentes\n- ❌ Conta Escrow: Bloqueada (erro GDF000014)\n\n## 📊 Métricas Esperadas\n- Health Check: 100% sucesso\n- Boletos: ~90% sucesso\n- PIX: ~80% sucesso (algumas chaves mock podem falhar)\n- Testes Negativos: 100% sucesso (erros esperados)\n\nVersão: 1.0\nData: 2024-10-23\nAutor: PlugQi Team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "plugqi-team"
+	},
+	"item": [
+		{
+			"name": "🔧 Health Check & Auth",
+			"item": [
+				{
+					"name": "Health Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has status field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"});",
+									"",
+									"pm.test(\"Service is healthy\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql('ok');",
+									"});",
+									"",
+									"// Log success for reporting",
+									"console.log('✅ Health Check passed - QiTech API is accessible');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "💰 Boletos",
+			"item": [
+				{
+					"name": "Criar Boleto Simples",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has boleto_key\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('boleto_key');",
+									"    pm.collectionVariables.set('last_boleto_key', jsonData.boleto_key);",
+									"});",
+									"",
+									"pm.test(\"Response has barcode\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('barcode');",
+									"});",
+									"",
+									"pm.test(\"Response has due_date\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('due_date');",
+									"});",
+									"",
+									"console.log('✅ Boleto created successfully:', pm.response.json().boleto_key);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate unique request control key",
+									"pm.collectionVariables.set('request_control_key', pm.variables.replaceIn('{{$guid}}'));",
+									"",
+									"// Set due date to 30 days from now",
+									"var dueDate = new Date();",
+									"dueDate.setDate(dueDate.getDate() + 30);",
+									"pm.collectionVariables.set('due_date', dueDate.toISOString().split('T')[0]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request_control_key\": \"{{request_control_key}}\",\n    \"amount\": 100.50,\n    \"expiration\": \"{{due_date}}\",\n    \"payer_data\": {\n        \"name\": \"João Silva\",\n        \"document_number\": \"12345678901\",\n        \"address\": {\n            \"street\": \"Rua Teste\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"postal_code\": \"01234567\"\n        }\n    },\n    \"fine_configuration\": {\n        \"contract_fine_rate\": 0.02\n    },\n    \"interest_configuration\": {\n        \"monthly_rate\": 0.01\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"{{account_key}}",
+								"boleto",
+								"{{requester_profile_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Boleto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has boleto data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('boleto_key');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('amount');",
+									"});",
+									"",
+									"console.log('✅ Boleto query successful');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/account/{{account_key}}/boleto/{{last_boleto_key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"{{account_key}}",
+								"boleto",
+								"{{last_boleto_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar BolePix (Boleto + PIX)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has boleto_key\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('boleto_key');",
+									"    pm.collectionVariables.set('last_bolepix_key', jsonData.boleto_key);",
+									"});",
+									"",
+									"pm.test(\"Response has PIX data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('pix_qr_code');",
+									"    pm.expect(jsonData).to.have.property('pix_copy_paste');",
+									"});",
+									"",
+									"console.log('✅ BolePix created successfully with PIX integration');"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate unique request control key for BolePix",
+									"pm.collectionVariables.set('bolepix_control_key', pm.variables.replaceIn('{{$guid}}'));",
+									"",
+									"// Set due date to 15 days from now",
+									"var dueDate = new Date();",
+									"dueDate.setDate(dueDate.getDate() + 15);",
+									"pm.collectionVariables.set('bolepix_due_date', dueDate.toISOString().split('T')[0]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request_control_key\": \"{{bolepix_control_key}}\",\n    \"amount\": 250.75,\n    \"expiration\": \"{{bolepix_due_date}}\",\n    \"payer_data\": {\n        \"name\": \"Maria Santos\",\n        \"document_number\": \"98765432100\",\n        \"address\": {\n            \"street\": \"Av. Paulista\",\n            \"number\": \"1000\",\n            \"neighborhood\": \"Bela Vista\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"postal_code\": \"01310100\"\n        }\n    },\n    \"pix_configuration\": {\n        \"pix_key\": \"183466bd-6383-4517-96f2-48f4f1488692\",\n        \"enable_pix\": true\n    },\n    \"fine_configuration\": {\n        \"contract_fine_rate\": 0.02\n    },\n    \"interest_configuration\": {\n        \"monthly_rate\": 0.01\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"{{account_key}}",
+								"boleto",
+								"{{requester_profile_key}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔄 PIX",
+			"item": [
+				{
+					"name": "Enviar PIX por Chave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has transaction_key\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('transaction_key');",
+									"    pm.collectionVariables.set('last_pix_transaction', jsonData.transaction_key);",
+									"});",
+									"",
+									"pm.test(\"Response has status\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"});",
+									"",
+									"console.log('✅ PIX transfer initiated successfully');"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate unique end to end ID",
+									"pm.collectionVariables.set('end_to_end_id', 'E' + Date.now().toString());",
+									"",
+									"// Set working PIX key (from test data)",
+									"pm.collectionVariables.set('pix_key_destination', '183466bd-6383-4517-96f2-48f4f1488692');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"end_to_end_id\": \"{{end_to_end_id}}\",\n    \"amount\": 50.00,\n    \"pix_key\": \"{{pix_key_destination}}\",\n    \"description\": \"Pagamento via PIX - Teste QA\",\n    \"destination_data\": {\n        \"name\": \"Destinatário Teste\",\n        \"document_number\": \"12345678901\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/account/{{account_key}}/pix_transfer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"{{account_key}}",
+								"pix_transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar Chave PIX",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has validation result\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('valid');",
+									"});",
+									"",
+									"console.log('✅ PIX key validation completed');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/pix_key/validation?pix_key=183466bd-6383-4517-96f2-48f4f1488692",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pix_key",
+								"validation"
+							],
+							"query": [
+								{
+									"key": "pix_key",
+									"value": "183466bd-6383-4517-96f2-48f4f1488692"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🏦 Conta Escrow (BLOQUEADO)",
+			"item": [
+				{
+					"name": "Reservar Conta PJ - Erro Esperado GDF000014",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expected 401 - Endpoint not allowed\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Response contains error code GDF000014\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.code).to.eql('GDF000014');",
+									"});",
+									"",
+									"pm.test(\"Error message mentions endpoint restriction\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.include('not allowed');",
+									"});",
+									"",
+									"console.log('✅ Expected error GDF000014 - Endpoint requires liberation from QiTech');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_owner\": {\n        \"company_document_number\": \"12345678000195\",\n        \"name\": \"Empresa Teste LTDA\",\n        \"email\": \"empresa@teste.com\",\n        \"foundation_date\": \"2020-01-01\"\n    },\n    \"signed_contract\": {\n        \"document_key\": \"test-document-key\",\n        \"signatures\": []\n    },\n    \"destinations\": []\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/account_request/escrow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account_request",
+								"escrow"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "❌ Testes Negativos",
+			"item": [
+				{
+					"name": "Boleto - Dados Inválidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 or 422\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+									"});",
+									"",
+									"pm.test(\"Response contains error message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('title');",
+									"});",
+									"",
+									"console.log('✅ Negative test passed - Invalid boleto data rejected');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request_control_key\": \"\",\n    \"amount\": -100,\n    \"expiration\": \"2020-01-01\",\n    \"payer_data\": {\n        \"name\": \"\",\n        \"document_number\": \"invalid_cpf\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"account",
+								"{{account_key}}",
+								"boleto",
+								"{{requester_profile_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação - Token Inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Response contains authentication error\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.title).to.include('Unauthenticated');",
+									"});",
+									"",
+									"console.log('✅ Negative test passed - Invalid token rejected');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer invalid_token_here",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global pre-request script",
+					"// JWT token generation would be implemented here",
+					"// For now, ensure jwt_token variable is set manually"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global test script for collection-wide metrics",
+					"// Track test results for reporting"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api-auth.sandbox.qitech.app",
+			"type": "string"
+		},
+		{
+			"key": "client_key",
+			"value": "{{QITECH_CLIENT_KEY}}",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "",
+			"type": "string",
+			"description": "JWT token for authentication - must be generated"
+		},
+		{
+			"key": "account_key",
+			"value": "{{ACCOUNT_KEY}}",
+			"type": "string",
+			"description": "Account key for testing"
+		},
+		{
+			"key": "requester_profile_key",
+			"value": "{{REQUESTER_PROFILE_KEY}}",
+			"type": "string",
+			"description": "Requester profile key for boleto operations"
+		},
+		{
+			"key": "last_boleto_key",
+			"value": "",
+			"type": "string",
+			"description": "Last created boleto key for follow-up tests"
+		},
+		{
+			"key": "last_bolepix_key",
+			"value": "",
+			"type": "string",
+			"description": "Last created BolePix key"
+		},
+		{
+			"key": "last_pix_transaction",
+			"value": "",
+			"type": "string",
+			"description": "Last PIX transaction key"
+		}
+	]
+}

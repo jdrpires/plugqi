@@ -1,0 +1,230 @@
+{
+  "execution_info": {
+    "start_time": "2025-10-22T17:57:55.568794",
+    "end_time": "2025-10-22T17:58:24.010098",
+    "duration_seconds": 28.441304,
+    "total_operations": 23,
+    "success_rate": 4.3478260869565215
+  },
+  "accounts": {
+    "created": [],
+    "failed": [
+      {
+        "index": 1,
+        "company": {
+          "cnpj": "12345678000001",
+          "razao_social": "Empresa Teste 1 Ltda",
+          "nome_fantasia": "Teste 1",
+          "email": "empresa1@teste.com",
+          "data_fundacao": "2020-01-01"
+        },
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:55.994180"
+      },
+      {
+        "index": 2,
+        "company": {
+          "cnpj": "12345678000002",
+          "razao_social": "Empresa Teste 2 Ltda",
+          "nome_fantasia": "Teste 2",
+          "email": "empresa2@teste.com",
+          "data_fundacao": "2020-01-01"
+        },
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:56.188632"
+      },
+      {
+        "index": 3,
+        "company": {
+          "cnpj": "12345678000003",
+          "razao_social": "Empresa Teste 3 Ltda",
+          "nome_fantasia": "Teste 3",
+          "email": "empresa3@teste.com",
+          "data_fundacao": "2020-01-01"
+        },
+        "error": "[QiTechError] 401 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:56.410312"
+      }
+    ],
+    "total": 3
+  },
+  "boletos": {
+    "created": [
+      {
+        "index": 3,
+        "type": "Com_Desconto",
+        "amount": 1000.0,
+        "payer": "Maria Oliveira Costa",
+        "bank_slip_key": "2b25db2a-87ed-4581-85f2-6f8b15e9c502",
+        "status": "created",
+        "created_at": "2025-10-22T17:57:57.602372"
+      }
+    ],
+    "failed": [
+      {
+        "index": 1,
+        "type": "PF_Basico",
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:56.829776"
+      },
+      {
+        "index": 2,
+        "type": "PJ_Multa_Juros",
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:57.131619"
+      },
+      {
+        "index": 4,
+        "type": "Valor_Alto",
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:57.877016"
+      },
+      {
+        "index": 5,
+        "type": "Vencimento_Curto",
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:57:58.518367"
+      }
+    ],
+    "total": 5
+  },
+  "bolepix": {
+    "created": [],
+    "failed": [
+      {
+        "index": 1,
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:15.093486"
+      },
+      {
+        "index": 2,
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:19.055621"
+      },
+      {
+        "index": 3,
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:20.074936"
+      },
+      {
+        "index": 4,
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:21.711044"
+      },
+      {
+        "index": 5,
+        "error": "[QiTechError] 400 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:22.223036"
+      }
+    ],
+    "total": 5
+  },
+  "pix_transactions": {
+    "created": [],
+    "failed": [
+      {
+        "index": 1,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:22.404848"
+      },
+      {
+        "index": 2,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:22.581264"
+      },
+      {
+        "index": 3,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:22.759937"
+      },
+      {
+        "index": 4,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:22.937489"
+      },
+      {
+        "index": 5,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:23.115213"
+      },
+      {
+        "index": 6,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:23.287906"
+      },
+      {
+        "index": 7,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:23.466873"
+      },
+      {
+        "index": 8,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:23.649222"
+      },
+      {
+        "index": 9,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:23.823773"
+      },
+      {
+        "index": 10,
+        "error": "[QiTechError] 404 - Falha na chamada à QiTech",
+        "error_type": "QiTechError",
+        "timestamp": "2025-10-22T17:58:24.008184"
+      }
+    ],
+    "total": 10
+  },
+  "stress_test_results": {
+    "boleto_creation_speed": {
+      "count": 20,
+      "duration": 0.00057220458984375,
+      "rate_per_second": 34894.37603993344
+    },
+    "pix_validation_speed": {
+      "count": 100,
+      "duration": 0.001107931137084961,
+      "rate_per_second": 90161.30696474634
+    }
+  },
+  "performance_metrics": {
+    "accounts_success_rate": 0.0,
+    "accounts_failure_rate": 100.0,
+    "boletos_success_rate": 20.0,
+    "boletos_failure_rate": 80.0,
+    "bolepix_success_rate": 0.0,
+    "bolepix_failure_rate": 100.0,
+    "pix_transactions_success_rate": 0.0,
+    "pix_transactions_failure_rate": 100.0,
+    "amount_distribution": {
+      "min": 1000.0,
+      "max": 1000.0,
+      "avg": 1000.0,
+      "total": 1000.0,
+      "count": 1
+    }
+  },
+  "error_analysis": {}
+}

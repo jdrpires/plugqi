@@ -1,0 +1,152 @@
+{
+  "results": {
+    "account_opening": {
+      "passed": 0,
+      "failed": 3,
+      "errors": [
+        "Reserva conta 1: [QiTechError] 401 - Falha na chamada à QiTech",
+        "Reserva conta 2: [QiTechError] 401 - Falha na chamada à QiTech",
+        "Reserva conta 3: [QiTechError] 401 - Falha na chamada à QiTech"
+      ]
+    },
+    "boletos": {
+      "passed": 4,
+      "failed": 0,
+      "errors": []
+    },
+    "bolepix": {
+      "passed": 5,
+      "failed": 0,
+      "errors": []
+    },
+    "pix": {
+      "passed": 5,
+      "failed": 0,
+      "errors": []
+    },
+    "payments": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "credit": {
+      "passed": 0,
+      "failed": 0,
+      "errors": []
+    },
+    "negative_tests": {
+      "passed": 3,
+      "failed": 0,
+      "errors": []
+    },
+    "exploratory": {
+      "passed": 3,
+      "failed": 0,
+      "errors": []
+    }
+  },
+  "test_data": {
+    "accounts_created": [],
+    "boletos_created": [
+      {
+        "bank_slip_key": "d06edbd4-bb53-4036-905e-0d30c232fd73",
+        "amount": 150.75,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "44cdc9df-755e-4844-82df-5fd3d7a6645a",
+        "amount": 5000.0,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "f7c04ebf-780f-4e2e-aa10-46a53bea8e29",
+        "amount": 10.5,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "bank_slip_key": "e45ae1f7-1076-4d9d-afc0-75aaec0905ca",
+        "amount": 1000.0,
+        "payer": "Mock Person Name",
+        "status": "accepted"
+      },
+      {
+        "amount": 63.62,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "f91ab843-ece4-4415-a6a6-18d67f737952",
+        "status": "accepted"
+      },
+      {
+        "amount": 248.61,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "1f367639-eaf5-421d-a744-cec1e18b1c29",
+        "status": "accepted"
+      },
+      {
+        "amount": 757.34,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "b5376488-d76a-41e7-8e8c-b8f1d482da78",
+        "status": "accepted"
+      },
+      {
+        "amount": 556.36,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "4499f8db-7297-4579-8fad-4f4e58f02299",
+        "status": "accepted"
+      },
+      {
+        "amount": 521.38,
+        "pix_key": "183466bd-6383-4517-96f2-48f4f1488692",
+        "pix_type": "uuid",
+        "bank_slip_key": "58237bc7-8a60-480d-9604-0a79d06ac19a",
+        "status": "accepted"
+      }
+    ],
+    "pix_transactions": [
+      {
+        "amount": 6.13,
+        "pix_key": "65322181032",
+        "status": "sent",
+        "pix_transfer_key": "7abd448c-df40-43ad-a6a6-e00b5deefbd7",
+        "end_to_end_id": "E324025022025102314395MvFrLYJgPm"
+      },
+      {
+        "amount": 8.5,
+        "pix_key": "22156083070",
+        "status": "sent",
+        "pix_transfer_key": "0f582c85-620a-4ec2-b359-e7e59ef5c543",
+        "end_to_end_id": "E32402502202510231439u9hqax3ggkf"
+      },
+      {
+        "amount": 1.77,
+        "pix_key": "96969879003",
+        "status": "sent",
+        "pix_transfer_key": "bb4f5211-7079-47bf-8953-770913fd4988",
+        "end_to_end_id": "E32402502202510231439ZAfeKLx0JFf"
+      },
+      {
+        "amount": 3.25,
+        "pix_key": "61295118092",
+        "status": "sent",
+        "pix_transfer_key": "b01db4a5-16c7-44d1-bc15-0400cf52f521",
+        "end_to_end_id": "E32402502202510231439CJOVFNl3f79"
+      },
+      {
+        "amount": 0.53,
+        "pix_key": "52720072800",
+        "status": "sent",
+        "pix_transfer_key": "6b518f24-e571-4f7c-a40b-ed18ea4aa728",
+        "end_to_end_id": "E32402502202510231439jzBRTvHkBMf"
+      }
+    ],
+    "execution_time": 25.303349018096924
+  },
+  "timestamp": "2025-10-23T11:39:44.881644",
+  "note": "Versão corrigida - adaptada às limitações do sandbox"
+}

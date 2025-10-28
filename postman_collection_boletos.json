@@ -1,0 +1,267 @@
+{
+	"name": "💰 Boletos",
+	"item": [
+		{
+			"name": "Criar Boleto Simples",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has boleto_key\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('boleto_key');",
+							"    pm.collectionVariables.set('last_boleto_key', jsonData.boleto_key);",
+							"});",
+							"",
+							"pm.test(\"Response has barcode\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('barcode');",
+							"});",
+							"",
+							"pm.test(\"Response has due_date\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('due_date');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate unique request control key",
+							"pm.collectionVariables.set('request_control_key', pm.variables.replaceIn('{{$guid}}'));",
+							"",
+							"// Set due date to 30 days from now",
+							"var dueDate = new Date();",
+							"dueDate.setDate(dueDate.getDate() + 30);",
+							"pm.collectionVariables.set('due_date', dueDate.toISOString().split('T')[0]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_control_key\": \"{{request_control_key}}\",\n    \"amount\": 100.50,\n    \"expiration\": \"{{due_date}}\",\n    \"payer_data\": {\n        \"name\": \"João Silva\",\n        \"document_number\": \"12345678901\",\n        \"address\": {\n            \"street\": \"Rua Teste\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"postal_code\": \"01234567\"\n        }\n    },\n    \"fine_configuration\": {\n        \"contract_fine_rate\": 0.02\n    },\n    \"interest_configuration\": {\n        \"monthly_rate\": 0.01\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto",
+						"{{requester_profile_key}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has boleto data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('boleto_key');",
+							"    pm.expect(jsonData).to.have.property('status');",
+							"    pm.expect(jsonData).to.have.property('amount');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto/{{last_boleto_key}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto",
+						"{{last_boleto_key}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Boletos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});",
+							"",
+							"pm.test(\"Array contains boleto objects\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    if (jsonData.length > 0) {",
+							"        pm.expect(jsonData[0]).to.have.property('boleto_key');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar BolePix (Boleto + PIX)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has boleto_key\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('boleto_key');",
+							"    pm.collectionVariables.set('last_bolepix_key', jsonData.boleto_key);",
+							"});",
+							"",
+							"pm.test(\"Response has PIX data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('pix_qr_code');",
+							"    pm.expect(jsonData).to.have.property('pix_copy_paste');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate unique request control key for BolePix",
+							"pm.collectionVariables.set('bolepix_control_key', pm.variables.replaceIn('{{$guid}}'));",
+							"",
+							"// Set due date to 15 days from now",
+							"var dueDate = new Date();",
+							"dueDate.setDate(dueDate.getDate() + 15);",
+							"pm.collectionVariables.set('bolepix_due_date', dueDate.toISOString().split('T')[0]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_control_key\": \"{{bolepix_control_key}}\",\n    \"amount\": 250.75,\n    \"expiration\": \"{{bolepix_due_date}}\",\n    \"payer_data\": {\n        \"name\": \"Maria Santos\",\n        \"document_number\": \"98765432100\",\n        \"address\": {\n            \"street\": \"Av. Paulista\",\n            \"number\": \"1000\",\n            \"neighborhood\": \"Bela Vista\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"postal_code\": \"01310100\"\n        }\n    },\n    \"pix_configuration\": {\n        \"pix_key\": \"183466bd-6383-4517-96f2-48f4f1488692\",\n        \"enable_pix\": true\n    },\n    \"fine_configuration\": {\n        \"contract_fine_rate\": 0.02\n    },\n    \"interest_configuration\": {\n        \"monthly_rate\": 0.01\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/account/{{account_key}}/boleto/{{requester_profile_key}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"account",
+						"{{account_key}}",
+						"boleto",
+						"{{requester_profile_key}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

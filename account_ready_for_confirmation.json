@@ -1,0 +1,10 @@
+{
+  "account_request_key": "e8e9e118-45e7-4659-aaaa-0677c0e2e4dc",
+  "status": "ready_for_confirmation",
+  "account_info": {
+    "account_digit": "7",
+    "account_branch": "0001",
+    "account_number": "6694401"
+  },
+  "received_at": "2025-10-23T16:30:17.696644"
+}
