@@ -9,6 +9,7 @@ SDK Python simplificado para integração com a API da QiTech, oferecendo funcio
 - **🔄 PIX** - Chaves, pagamentos e QR codes
 - **💳 Pagamentos** - Boletos e transferências
 - **💸 Crédito** - Simulações e análises
+- **🔄 Transferências Automáticas** - Regras de movimentação programada
 - **🔐 Autenticação** - JWT ES512 automática
 
 ## 📦 Instalação
@@ -62,6 +63,22 @@ pix = plugqi.pix.enviar_pix_chave(
     pix_key="joao@email.com",
     valor=50.0
 )
+
+# Criar regra de transferência automática
+regra = plugqi.automatic_transfer.create_split_percentage_rule(
+    account_key="sua-conta",
+    destinations=[{
+        "account_branch": "0001",
+        "account_number": "123456",
+        "account_digit": "7",
+        "document_number": "12345678901",
+        "name": "João Silva",
+        "financial_institutions_code_number": "001",
+        "percentage": 80
+    }],
+    transfer_cronstring="0 18 * * 1-5",  # Dias úteis às 18h
+    remaining_balance=100.0
+)
 ```
 
 ## 📚 Módulos Disponíveis
@@ -90,6 +107,56 @@ pix = plugqi.pix.enviar_pix_chave(
 ### Crédito (`plugqi.credit`)
 - Simulações de empréstimo
 
+### Transferências Automáticas (`plugqi.automatic_transfer`)
+- `create_split_percentage_rule()` - Divisão percentual
+- `create_split_equal_rule()` - Divisão igualitária  
+- `create_single_beneficiary_rule()` - Beneficiário único
+- `update_transfer_rule()` - Atualizar regra
+- `deactivate_rule()` - Desativar regra
+- `build_destination()` - Helper para destinos
+
+#### Tipos de Regras de Transferência
+
+**Split Percentage** - Divide percentualmente:
+```python
+# 80% dividido entre contas, 20% fica na origem
+destinations = [
+    {"percentage": 50, ...},  # 50%
+    {"percentage": 30, ...}   # 30%
+]
+plugqi.automatic_transfer.create_split_percentage_rule(
+    account_key="conta-origem",
+    destinations=destinations,
+    transfer_cronstring="0 18 * * 1-5"  # Dias úteis 18h
+)
+```
+
+**Split Equal** - Divide igualmente:
+```python
+# Divide igualmente entre todas as contas destino
+plugqi.automatic_transfer.create_split_equal_rule(
+    account_key="conta-origem", 
+    destinations=[conta1, conta2, conta3],
+    remaining_balance=100.0  # Manter R$ 100 na origem
+)
+```
+
+**Single Beneficiary** - Um único destino:
+```python
+# Transfere tudo para uma conta
+plugqi.automatic_transfer.create_single_beneficiary_rule(
+    account_key="conta-origem",
+    destination=conta_destino,
+    transfer_cronstring="0 0 * * *"  # Diariamente à meia-noite
+)
+```
+
+#### Exemplos de CRON
+- `"*/5 * * * *"` - A cada 5 minutos
+- `"0 0 * * *"` - Diariamente às 00:00
+- `"0 18 * * 1-5"` - Dias úteis às 18:00
+- `"0 0 1 * *"` - Todo dia 1 do mês
+
 ## 🧪 Testes
 
 ```bash
@@ -98,6 +165,9 @@ python -m pytest tests/ -v
 
 # Teste de integração
 python test_integration.py
+
+# Teste transferências automáticas
+python test_automatic_transfer.py
 
 # Smoke test (precisa de credenciais)
 python examples/smoke_test.py
@@ -114,7 +184,8 @@ plugqi/
 │   ├── pix.py            # PIX
 │   ├── account_opening.py # Contas
 │   ├── payment.py        # Pagamentos
-│   └── credit.py         # Crédito
+│   ├── credit.py         # Crédito
+│   └── automatic_transfer.py # Transferências automáticas
 ├── tests/                # Testes
 ├── examples/             # Exemplos
 └── keys/                 # Chaves privadas
