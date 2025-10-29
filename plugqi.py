@@ -7,6 +7,8 @@ from connectors.account_opening import AccountOpeningConnector
 from connectors.document_upload import DocumentUploadConnector
 from connectors.financial_institution import FinancialInstitutionConnector
 from connectors.automatic_transfer import AutomaticTransferConnector
+from connectors.ted import TedConnector
+from connectors.ted_schedule import TedScheduleConnector
 from qitech_client import QiTechClient, QiTechError
 
 
@@ -23,6 +25,8 @@ class PlugQi:
         self.document_upload = DocumentUploadConnector(self.client)
         self.financial_institution = FinancialInstitutionConnector(self.client)
         self.automatic_transfer = AutomaticTransferConnector(self.client)
+        self.ted = TedConnector(self.client)
+        self.ted_schedule = TedScheduleConnector(self.client)
 
     def health_check(self) -> bool:
         """
