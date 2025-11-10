@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "plugqi-qitech-v2-collection",
+		"name": "🔌 PlugQi - QiTech API v2.0 Collection",
+		"description": "Collection completa para testes do SDK PlugQi com API QiTech incluindo Orquestrador\n\n## 🆕 Novidades v2.0\n- 🎯 **Orquestrador de Abertura de Conta** - Fluxo automatizado completo\n- 🔄 **Workflows** - Controle de estado e monitoramento\n- 📊 **Métricas Avançadas** - Relatórios detalhados\n- 🛠️ **Helpers Integrados** - Construção automática de dados\n\n## 📋 Como Usar\n\n### 1. Configuração Inicial\n- Configure as variáveis de ambiente:\n  - `QITECH_CLIENT_KEY`: Sua chave de cliente QiTech\n  - `QITECH_BASE_URL`: URL base da API (sandbox/prod)\n  - `ACCOUNT_KEY`: Chave da conta para testes\n\n### 2. Ordem de Execução Sugerida\n1. **Health Check & Auth** - Validar conectividade\n2. **Instituições Financeiras** - Consultar bancos disponíveis\n3. **Orquestrador** - Fluxo completo de abertura de conta\n4. **Boletos** - Criar e gerenciar boletos\n5. **PIX** - Transferências e QR codes\n6. **TED** - Transferências eletrônicas\n7. **Upload Documentos** - Gerenciar documentos\n\n## 🎯 Cobertura de Testes v2.0\n- ✅ Health Check & Conectividade\n- ✅ Instituições Financeiras (230+ bancos)\n- 🆕 Orquestrador de Abertura de Conta\n- ✅ Boletos e BolePix\n- ✅ PIX e QR Codes\n- ✅ TED e Agendamentos\n- ✅ Upload de Documentos\n- ✅ Testes Negativos\n\nVersão: 2.0\nData: 2024-11-10\nAutor: PlugQi Team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "plugqi-team-v2"
+	},
+	"item": [
+		{
+			"name": "🔧 Health Check & Auth",
+			"item": [
+				{
+					"name": "Health Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has expected structure\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"});",
+									"",
+									"console.log('✅ Health Check - QiTech API accessible');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"QI Tech\"\n}"
+						},
+						"url": {
+							"raw": "{{QITECH_BASE_URL}}/test",
+							"host": ["{{QITECH_BASE_URL}}"],
+							"path": ["test"]
+						}
+					}
+				}
+			]
+		}

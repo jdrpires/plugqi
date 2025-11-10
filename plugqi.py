@@ -4,6 +4,7 @@ from connectors.boleto import BoletoConnector
 from connectors.boleto_payment import BoletoPaymentConnector
 from connectors.pix import PixConnector
 from connectors.account_opening import AccountOpeningConnector
+from connectors.account_opening_orchestrator import AccountOpeningOrchestrator
 from connectors.document_upload import DocumentUploadConnector
 from connectors.financial_institution import FinancialInstitutionConnector
 from connectors.automatic_transfer import AutomaticTransferConnector
@@ -27,6 +28,8 @@ class PlugQi:
         self.automatic_transfer = AutomaticTransferConnector(self.client)
         self.ted = TedConnector(self.client)
         self.ted_schedule = TedScheduleConnector(self.client)
+        # Orquestrador (inicializado após os outros connectors)
+        self.account_orchestrator = AccountOpeningOrchestrator(self)
 
     def health_check(self) -> bool:
         """

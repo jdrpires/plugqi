@@ -3,11 +3,32 @@
 Connector para consulta de instituições financeiras
 """
 
+import time
 from typing import Dict, Any, Optional, List
 
 class FinancialInstitutionConnector:
     def __init__(self, client):
         self.client = client
+        self._cache = {}
+        self._cache_timestamp = None
+        self._cache_ttl = 86400  # 24 horas
+    
+    def _is_cache_valid(self) -> bool:
+        """Verifica se o cache ainda é válido"""
+        if self._cache_timestamp is None:
+            return False
+        return (time.time() - self._cache_timestamp) < self._cache_ttl
+    
+    def _update_cache(self, key: str, value: Any) -> None:
+        """Atualiza o cache com nova entrada"""
+        if self._cache_timestamp is None:
+            self._cache_timestamp = time.time()
+        self._cache[key] = value
+    
+    def clear_cache(self) -> None:
+        """Limpa o cache manualmente"""
+        self._cache.clear()
+        self._cache_timestamp = None
 
     def list_institutions(self, 
                          ispb_number: Optional[str] = None,
@@ -49,6 +70,38 @@ class FinancialInstitutionConnector:
     def get_by_compe(self, compe_number: str) -> Dict[str, Any]:
         """Busca instituição por código COMPE"""
         return self.list_institutions(compe_number=compe_number)
+    
+    def get_by_ispb_cached(self, ispb_number: str) -> Dict[str, Any]:
+        """Busca instituição por ISPB com cache"""
+        cache_key = f"ispb_{ispb_number}"
+        
+        # Verificar cache
+        if self._is_cache_valid() and cache_key in self._cache:
+            return self._cache[cache_key]
+        
+        # Buscar na API
+        result = self.get_by_ispb(ispb_number)
+        
+        # Salvar no cache
+        self._update_cache(cache_key, result)
+        
+        return result
+    
+    def get_by_compe_cached(self, compe_number: str) -> Dict[str, Any]:
+        """Busca instituição por COMPE com cache"""
+        cache_key = f"compe_{compe_number}"
+        
+        # Verificar cache
+        if self._is_cache_valid() and cache_key in self._cache:
+            return self._cache[cache_key]
+        
+        # Buscar na API
+        result = self.get_by_compe(compe_number)
+        
+        # Salvar no cache
+        self._update_cache(cache_key, result)
+        
+        return result
     
     def get_paginated(self, page_number: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Lista instituições com paginação"""
@@ -96,11 +149,11 @@ class FinancialInstitutionConnector:
             return []
     
     def get_bank_info(self, bank_code: str) -> Optional[Dict[str, Any]]:
-        """Obtém informações de banco por código (ISPB ou COMPE)"""
+        """Obtém informações de banco por código (ISPB ou COMPE) com cache"""
         
-        # Tentar por ISPB primeiro
+        # Tentar por ISPB primeiro (com cache)
         try:
-            response = self.get_by_ispb(bank_code)
+            response = self.get_by_ispb_cached(bank_code)
             if 'data' in response and response['data']:
                 return response['data'][0]
             elif bank_code in response:
@@ -108,9 +161,9 @@ class FinancialInstitutionConnector:
         except:
             pass
         
-        # Tentar por COMPE
+        # Tentar por COMPE (com cache)
         try:
-            response = self.get_by_compe(bank_code)
+            response = self.get_by_compe_cached(bank_code)
             if 'data' in response and response['data']:
                 return response['data'][0]
             
@@ -123,3 +176,12 @@ class FinancialInstitutionConnector:
             pass
         
         return None
+    
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """Retorna estatísticas do cache"""
+        return {
+            "cache_size": len(self._cache),
+            "cache_valid": self._is_cache_valid(),
+            "cache_age_seconds": time.time() - self._cache_timestamp if self._cache_timestamp else 0,
+            "ttl_seconds": self._cache_ttl
+        }

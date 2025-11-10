@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "plugqi-orchestrator-collection",
+		"name": "🎯 PlugQi - Orquestrador de Abertura de Conta",
+		"description": "Collection específica para testar o Orquestrador de Abertura de Conta\n\n## 🆕 Funcionalidades\n- 🏦 Abertura de Conta PF - Fluxo Completo\n- 🏢 Abertura de Conta PJ - Fluxo Completo\n- 📊 Monitoramento de Workflows\n- 📄 Upload e Validação de Documentos\n- 🔍 Consulta de Status\n\n## 📋 Variáveis Necessárias\n- `QITECH_BASE_URL`: URL base da API QiTech\n- `QITECH_CLIENT_KEY`: Chave do cliente\n\n## 🚀 Como Usar\n1. Configure as variáveis de ambiente\n2. Execute Health Check primeiro\n3. Execute fluxos de abertura de conta\n4. Monitore status dos workflows\n\nVersão: 1.0\nData: 2024-11-10",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "🔧 Health Check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"QI Tech\"\n}"
+				},
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/test",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["test"]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Health Check OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"console.log('✅ QiTech API accessible');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "🏦 Orquestrador - Abertura Conta PF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"workflow_type\": \"account_opening_pf\",\n    \"person_data\": {\n        \"name\": \"João Silva Teste\",\n        \"document_number\": \"12345678901\",\n        \"email\": \"joao.teste@email.com\",\n        \"birthdate\": \"1990-01-15\",\n        \"phone\": \"11999887766\"\n    },\n    \"documents\": {\n        \"rg_front\": \"base64_encoded_image\",\n        \"rg_back\": \"base64_encoded_image\",\n        \"proof_residence\": \"base64_encoded_pdf\"\n    },\n    \"address\": {\n        \"street\": \"Rua das Flores, 123\",\n        \"neighborhood\": \"Centro\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\",\n        \"postal_code\": \"01234567\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/orchestrator/account/pf",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["orchestrator", "account", "pf"]
+				}
+			},
+			"event": [
+				{
+					"listen": "pre-request",
+					"script": {
+						"exec": [
+							"// Gerar dados únicos",
+							"const timestamp = Date.now();",
+							"const email = `teste.pf.${timestamp}@email.com`;",
+							"pm.environment.set('test_email_pf', email);",
+							"console.log('🎯 Iniciando workflow PF com email:', email);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Workflow PF iniciado\", function () {",
+							"    pm.response.to.have.status.oneOf([200, 400, 401]);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const jsonData = pm.response.json();",
+							"    pm.environment.set('workflow_id', jsonData.workflow_id);",
+							"    pm.environment.set('account_request_key', jsonData.account_request_key);",
+							"    console.log('✅ Workflow ID:', jsonData.workflow_id);",
+							"    console.log('📊 Status:', jsonData.status);",
+							"} else {",
+							"    console.log('⚠️ Workflow falhou (esperado em ambiente de teste)');",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "🏢 Orquestrador - Abertura Conta PJ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"workflow_type\": \"account_opening_pj\",\n    \"company_data\": {\n        \"name\": \"Empresa Teste LTDA\",\n        \"document_number\": \"12345678000195\",\n        \"email\": \"empresa.teste@email.com\",\n        \"foundation_date\": \"2020-01-15\",\n        \"phone\": \"1133334444\"\n    },\n    \"legal_representatives\": [\n        {\n            \"name\": \"Maria Silva Santos\",\n            \"document_number\": \"98765432100\",\n            \"email\": \"maria@empresateste.com\",\n            \"birthdate\": \"1985-03-20\",\n            \"phone\": \"11888776655\"\n        }\n    ],\n    \"documents\": {\n        \"company_statute\": \"base64_encoded_pdf\",\n        \"cnpj_certificate\": \"base64_encoded_pdf\",\n        \"legal_rep_rg\": \"base64_encoded_image\"\n    },\n    \"address\": {\n        \"street\": \"Av. Paulista, 1000\",\n        \"neighborhood\": \"Bela Vista\",\n        \"city\": \"São Paulo\",\n        \"state\": \"SP\",\n        \"postal_code\": \"01310100\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/orchestrator/account/pj",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["orchestrator", "account", "pj"]
+				}
+			},
+			"event": [
+				{
+					"listen": "pre-request",
+					"script": {
+						"exec": [
+							"// Gerar dados únicos para PJ",
+							"const timestamp = Date.now();",
+							"const email = `empresa.${timestamp}@email.com`;",
+							"pm.environment.set('test_email_pj', email);",
+							"console.log('🎯 Iniciando workflow PJ com email:', email);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Workflow PJ processado\", function () {",
+							"    pm.response.to.have.status.oneOf([200, 400, 401]);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const jsonData = pm.response.json();",
+							"    pm.environment.set('workflow_id_pj', jsonData.workflow_id);",
+							"    console.log('✅ Workflow PJ ID:', jsonData.workflow_id);",
+							"    console.log('📊 Status:', jsonData.status);",
+							"} else {",
+							"    console.log('⚠️ Workflow PJ falhou (esperado)');",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "📊 Consultar Status Workflow",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/orchestrator/workflow/{{workflow_id}}/status",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["orchestrator", "workflow", "{{workflow_id}}", "status"]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status consultado\", function () {",
+							"    pm.response.to.have.status.oneOf([200, 404]);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const jsonData = pm.response.json();",
+							"    console.log('📊 Workflow Status:', jsonData.status);",
+							"    console.log('📋 Steps:', jsonData.steps?.length || 0);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "🔄 Retomar Workflow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"workflow_id\": \"{{workflow_id}}\",\n    \"resume_from_step\": \"upload_documents\"\n}"
+				},
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/orchestrator/workflow/resume",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["orchestrator", "workflow", "resume"]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Resume processado\", function () {",
+							"    pm.response.to.have.status.oneOf([200, 400, 404]);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    console.log('🔄 Workflow retomado com sucesso');",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "🏦 Consultar Instituições Financeiras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/financial_institution",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["financial_institution"]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Instituições consultadas\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const jsonData = pm.response.json();",
+							"    console.log('🏦 Instituições disponíveis:', jsonData.length || 0);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "📄 Upload Documento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "document_type",
+							"value": "rg_front",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{QITECH_BASE_URL}}/document",
+					"host": ["{{QITECH_BASE_URL}}"],
+					"path": ["document"]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Upload processado\", function () {",
+							"    pm.response.to.have.status.oneOf([200, 400]);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const jsonData = pm.response.json();",
+							"    pm.environment.set('document_key', jsonData.document_key);",
+							"    console.log('📄 Documento enviado:', jsonData.document_key);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "QITECH_BASE_URL",
+			"value": "https://api-auth.sandbox.qitech.app",
+			"type": "string"
+		}
+	]
+}

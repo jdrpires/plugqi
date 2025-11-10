@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-11-06T11:35:19.802640",
+  "conectividade": "✅ OK",
+  "instituicoes_financeiras": "✅ 230 disponíveis",
+  "account_key": "bb67b08c-e8c0-4333-929a-1a64c0b0bfa6",
+  "operacoes_simuladas": {
+    "saldo_inicial": 1000.0,
+    "boleto_criado": {
+      "valor": 150.0,
+      "vencimento": "2025-12-06",
+      "pagador": "Cliente Teste"
+    },
+    "pix_enviado": {
+      "valor": 50.0,
+      "chave_destino": "teste@email.com",
+      "descricao": "PIX teste"
+    },
+    "ted_enviado": {
+      "valor": 200.0,
+      "beneficiario": "Beneficiário TED",
+      "banco": "001"
+    },
+    "ted_agendado": {
+      "valor": 100.0,
+      "data": "2025-11-07",
+      "beneficiario": "Beneficiário Agendado"
+    }
+  },
+  "saldo_final": 800.0,
+  "funcionalidades_testadas": {
+    "health_check": "✅ OK",
+    "instituicoes_financeiras": "✅ OK",
+    "validacoes_pix": "✅ OK",
+    "helpers_construcao": "✅ OK"
+  },
+  "status": "✅ TESTE CONCLUÍDO COM SUCESSO"
+}

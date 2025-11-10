@@ -4,12 +4,16 @@ SDK Python simplificado para integração com a API da QiTech, oferecendo funcio
 
 ## 🚀 Funcionalidades
 
+- **🎯 Orquestrador de Abertura de Conta** - Fluxo automatizado completo
 - **🏦 Abertura de Contas** - Contas PJ com fluxo completo
 - **💰 Boletos** - Criação, consulta e BolePix
 - **🔄 PIX** - Chaves, pagamentos e QR codes
 - **💳 Pagamentos** - Boletos e transferências
 - **💸 Crédito** - Simulações e análises
 - **🔄 Transferências Automáticas** - Regras de movimentação programada
+- **🏦 TED** - Transferências eletrônicas e agendamentos
+- **📄 Upload de Documentos** - Gerenciamento completo de documentos
+- **🏦 Instituições Financeiras** - Consulta de 230+ bancos
 - **🔐 Autenticação** - JWT ES512 automática
 
 ## 📦 Instalação
@@ -41,6 +45,29 @@ plugqi = PlugQi()
 # Verificar conectividade
 if plugqi.health_check():
     print("✅ Conectado à QiTech")
+
+# 🎯 ORQUESTRADOR - Fluxo completo de abertura de conta PF
+person_data = plugqi.account_orchestrator.build_person_data(
+    name="João Silva",
+    document="12345678901",
+    email="joao@email.com",
+    birthdate="1990-01-15"
+)
+
+documents_paths = {
+    "rg_front": "/path/to/rg_frente.jpg",
+    "rg_back": "/path/to/rg_verso.jpg",
+    "proof_residence": "/path/to/comprovante.pdf"
+}
+
+# Executar fluxo automatizado completo
+workflow_result = plugqi.account_orchestrator.create_account_pf_complete(
+    person_data=person_data,
+    documents_paths=documents_paths
+)
+
+print(f"Status: {workflow_result['status']}")
+print(f"Account Key: {workflow_result['account_request_key']}")
 
 # Criar boleto
 boleto = plugqi.boleto.create_boleto(
@@ -82,6 +109,13 @@ regra = plugqi.automatic_transfer.create_split_percentage_rule(
 ```
 
 ## 📚 Módulos Disponíveis
+
+### Orquestrador (`plugqi.account_orchestrator`)
+- `create_account_pf_complete()` - Fluxo completo PF
+- `create_account_pj_complete()` - Fluxo completo PJ
+- `build_person_data()` - Helper dados PF
+- `build_company_data()` - Helper dados PJ
+- `get_workflow_status()` - Status do workflow
 
 ### Boletos (`plugqi.boleto`)
 - `create_boleto()` - Criar boleto

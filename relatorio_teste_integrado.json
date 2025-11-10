@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-11-06T11:33:49.306200",
+  "account_key": "test-account-key-d6cf1837",
+  "saldo_inicial": 1000.0,
+  "saldo_final": 650.0,
+  "operacoes": {
+    "boleto_criado": false,
+    "pix_enviado": true,
+    "ted_enviado": true,
+    "ted_agendado": true,
+    "boleto_pago": false
+  }
+}

@@ -1,0 +1,1913 @@
+{
+  "timestamp": "2025-11-10T18:06:54.702579",
+  "account_key": "bb67b08c-e8c0-4333-929a-1a64c0b0bfa6",
+  "total_testes": 10,
+  "sucessos": 2,
+  "taxa_sucesso": "20.0%",
+  "resultados_detalhados": {
+    "instituicoes": {
+      "status": "sucesso",
+      "resultado": [
+        {
+          "compe_number": "001",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00000000",
+          "name": "Banco do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "070",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00000208",
+          "name": "Banco de Brasília S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00038121",
+          "name": "Banco Central do Brasil - Selic",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00038166",
+          "name": "Banco Central do Brasil",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "272",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00250699",
+          "name": "AGK Corretora de Câmbio S.A.",
+          "str_start_date": "2018-11-21"
+        },
+        {
+          "compe_number": "136",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00315557",
+          "name": "Confederação Nacional das Cooperativas Centrais Unicred Ltda – Unicred do Brasil",
+          "str_start_date": "2014-07-28"
+        },
+        {
+          "compe_number": "104",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00360305",
+          "name": "Caixa Econômica Federal",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00394460",
+          "name": "Secretaria do Tesouro Nacional - STN",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "077",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00416968",
+          "name": "Banco Inter S.A.",
+          "str_start_date": "2008-08-15"
+        },
+        {
+          "compe_number": "741",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00517645",
+          "name": "Banco Ribeirão Preto S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "739",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00558456",
+          "name": "Banco Cetelem S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "743",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00795423",
+          "name": "Banco Semear S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "100",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00806535",
+          "name": "Planner Corretora de Valores S.A.",
+          "str_start_date": "2011-04-27"
+        },
+        {
+          "compe_number": "096",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "00997185",
+          "name": "Banco B3 S.A.",
+          "str_start_date": "2004-11-12"
+        },
+        {
+          "compe_number": "747",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "01023570",
+          "name": "Banco Rabobank International Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "322",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "01073966",
+          "name": "Cooperativa de Crédito Rural de Abelardo Luz - Sulcredi/Crediluz",
+          "str_start_date": "2019-06-14"
+        },
+        {
+          "compe_number": "748",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "01181521",
+          "name": "Banco Cooperativo Sicredi S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "752",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "01522368",
+          "name": "Banco BNP Paribas Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "091",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "01634601",
+          "name": "Central de Cooperativas de Economia e Crédito Mútuo do Est RS - Unicred",
+          "str_start_date": "2010-11-22"
+        },
+        {
+          "compe_number": "399",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "01701201",
+          "name": "Kirton Bank S.A. - Banco Múltiplo",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "108",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "01800019",
+          "name": "PortoCred S.A. Crédito, Financiamento e Investimento",
+          "str_start_date": "2011-11-03"
+        },
+        {
+          "compe_number": "756",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "02038232",
+          "name": "Banco Cooperativo do Brasil S/A - Bancoob",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "757",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "02318507",
+          "name": "Banco Keb Hana do Brasil S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "102",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02332886",
+          "name": "XP Investimentos Corretora de Câmbio Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2011-11-22"
+        },
+        {
+          "compe_number": "084",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "02398976",
+          "name": "Uniprime Norte do Paraná - Cooperativa de Crédito Ltda.",
+          "str_start_date": "2009-11-24"
+        },
+        {
+          "compe_number": "180",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02685483",
+          "name": "CM Capital Markets Corretora de Câmbio, Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2017-01-20"
+        },
+        {
+          "compe_number": "066",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02801938",
+          "name": "Banco Morgan Stanley S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "015",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02819125",
+          "name": "UBS Brasil Corretora de Câmbio, Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2011-03-15"
+        },
+        {
+          "compe_number": "143",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02992317",
+          "name": "Treviso Corretora de Câmbio S.A.",
+          "str_start_date": "2015-08-24"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "02992335",
+          "name": "Câmara Interbancária de Pagamentos - CIP - LDL",
+          "str_start_date": "2004-02-13"
+        },
+        {
+          "compe_number": "062",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "03012230",
+          "name": "Hipercard Banco Múltiplo S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "074",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "03017677",
+          "name": "Banco J. Safra S.A.",
+          "str_start_date": "2004-08-26"
+        },
+        {
+          "compe_number": "099",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "03046391",
+          "name": "Uniprime Central – Central Interestadual de Cooperativas de Crédito Ltda.",
+          "str_start_date": "2011-01-11"
+        },
+        {
+          "compe_number": "025",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "03323840",
+          "name": "Banco Alfa S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "315",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "03502968",
+          "name": "PI Distribuidora de Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2019-01-24"
+        },
+        {
+          "compe_number": "075",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "03532415",
+          "name": "Banco ABN Amro S.A.",
+          "str_start_date": "2005-11-11"
+        },
+        {
+          "compe_number": "040",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "03609817",
+          "name": "Banco Cargill S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "307",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "03751794",
+          "name": "Terra Investimentos Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-10-25"
+        },
+        {
+          "compe_number": "190",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "03973814",
+          "name": "Servicoop - Cooperativa de Economia e Crédito Mútuo dos Servidores Públicos Esta",
+          "str_start_date": "2017-10-16"
+        },
+        {
+          "compe_number": "296",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04062902",
+          "name": "Vision S.A. Corretora de Câmbio",
+          "str_start_date": "2019-02-11"
+        },
+        {
+          "compe_number": "063",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "04184779",
+          "name": "Banco Bradescard S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "191",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04257795",
+          "name": "Nova Futura Corretora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2017-06-22"
+        },
+        {
+          "compe_number": "064",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04332281",
+          "name": "Goldman Sachs do Brasil  Banco Múltiplo S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04391007",
+          "name": "Câmara Interbancária de Pagamentos",
+          "str_start_date": "2002-11-27"
+        },
+        {
+          "compe_number": "097",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "04632856",
+          "name": "Cooperativa Central de Crédito Noroeste Brasileiro Ltda - CentralCredi",
+          "str_start_date": "2011-02-08"
+        },
+        {
+          "compe_number": "016",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04715685",
+          "name": "Coop de Créd. Mútuo dos Despachantes de Trânsito de SC e Rio Grande do Sul",
+          "str_start_date": "2012-05-08"
+        },
+        {
+          "compe_number": "299",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04814563",
+          "name": "Sorocred - Crédito, Financiamento e Investimento S/A",
+          "str_start_date": "2018-12-03"
+        },
+        {
+          "compe_number": "012",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04866275",
+          "name": "Banco Inbursa S.A.",
+          "str_start_date": "2017-05-04"
+        },
+        {
+          "compe_number": "003",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "04902979",
+          "name": "Banco da Amazônia S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "060",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "04913129",
+          "name": "Confidence Corretora de Câmbio S.A.",
+          "str_start_date": "2010-09-21"
+        },
+        {
+          "compe_number": "037",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "04913711",
+          "name": "Banco do Estado do Pará S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "159",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "05442029",
+          "name": "Casa do Crédito S.A. Sociedade de Crédito ao Microempreendedor",
+          "str_start_date": "2017-09-04"
+        },
+        {
+          "compe_number": "172",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "05452073",
+          "name": "Albatross Corretora de Câmbio e Valores S.A",
+          "str_start_date": "2017-09-14"
+        },
+        {
+          "compe_number": "085",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "05463212",
+          "name": "Cooperativa Central de Crédito - Ailos",
+          "str_start_date": "2010-05-17"
+        },
+        {
+          "compe_number": "114",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "05790149",
+          "name": "Central Cooperativa de Crédito no Estado do Espírito Santo - CECOOP",
+          "str_start_date": "2011-10-27"
+        },
+        {
+          "compe_number": "036",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "06271464",
+          "name": "Banco Bradesco BBI S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "394",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "07207996",
+          "name": "Banco Bradesco Financiamentos S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "004",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "07237373",
+          "name": "Banco do Nordeste do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "320",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "07450604",
+          "name": "China Construction Bank (Brasil) Banco Múltiplo S/A",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "189",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07512441",
+          "name": "HS Financeira S/A Crédito, Financiamento e Investimentos",
+          "str_start_date": "2017-06-05"
+        },
+        {
+          "compe_number": "105",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07652226",
+          "name": "Lecca Crédito, Financiamento e Investimento S/A",
+          "str_start_date": "2011-12-27"
+        },
+        {
+          "compe_number": "076",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07656500",
+          "name": "Banco KDB do Brasil S.A.",
+          "str_start_date": "2006-04-10"
+        },
+        {
+          "compe_number": "082",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07679404",
+          "name": "Banco Topazio S.A.",
+          "str_start_date": "2009-06-12"
+        },
+        {
+          "compe_number": "286",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07853842",
+          "name": "Cooperativa de Crédito Rural de Ouro Sulcredi/Ouro",
+          "str_start_date": "2018-09-17"
+        },
+        {
+          "compe_number": "093",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "07945233",
+          "name": "Pólocred Sociedade de Crédito ao Microempreendedor e à Empresa de Pequeno Porte",
+          "str_start_date": "2010-11-09"
+        },
+        {
+          "compe_number": "273",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "08253539",
+          "name": "Cooperativa de Crédito Rural de São Miguel do Oeste - Sulcredi/São Miguel",
+          "str_start_date": "2018-04-24"
+        },
+        {
+          "compe_number": "290",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "08561701",
+          "name": "Pagseguro Internet S.A.",
+          "str_start_date": "2018-11-07"
+        },
+        {
+          "compe_number": "157",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09105360",
+          "name": "ICAP do Brasil Corretora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2016-02-12"
+        },
+        {
+          "compe_number": "183",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09210106",
+          "name": "Socred S.A. - Sociedade de Crédito ao Microempreendedor e à Empresa de Pequeno P",
+          "str_start_date": "2017-06-12"
+        },
+        {
+          "compe_number": "014",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09274232",
+          "name": "State Street Brasil S.A. - Banco Comercial",
+          "str_start_date": "2008-08-08"
+        },
+        {
+          "compe_number": "130",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09313766",
+          "name": "Caruana S.A. Sociedade de Crédito, Financiamento e Investimento",
+          "str_start_date": "2013-08-12"
+        },
+        {
+          "compe_number": "127",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09512542",
+          "name": "Codepe Corretora de Valores e Câmbio S.A.",
+          "str_start_date": "2012-11-09"
+        },
+        {
+          "compe_number": "079",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "09516419",
+          "name": "Banco Original do Agronegócio S.A.",
+          "str_start_date": "2008-07-25"
+        },
+        {
+          "compe_number": "081",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "10264663",
+          "name": "BancoSeguro S.A.",
+          "str_start_date": "2008-10-24"
+        },
+        {
+          "compe_number": "133",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "10398952",
+          "name": "Confederação Nacional das Cooperativas Centrais de Crédito e Economia Familiar e",
+          "str_start_date": "2016-05-02"
+        },
+        {
+          "compe_number": "323",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "10573521",
+          "name": "MercadoPago.com Representações Ltda.",
+          "str_start_date": "2019-06-24"
+        },
+        {
+          "compe_number": "121",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "10664513",
+          "name": "Banco Agibank S.A.",
+          "str_start_date": "2012-04-04"
+        },
+        {
+          "compe_number": "083",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "10690848",
+          "name": "Banco da China Brasil S.A.",
+          "str_start_date": "2009-07-14"
+        },
+        {
+          "compe_number": "138",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "10853017",
+          "name": "Get Money Corretora de Câmbio S.A.",
+          "str_start_date": "2014-07-14"
+        },
+        {
+          "compe_number": "024",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "10866788",
+          "name": "Banco Bandepe S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "319",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "11495073",
+          "name": "OM Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2019-03-01"
+        },
+        {
+          "compe_number": "095",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "11703662",
+          "name": "Travelex Banco de Câmbio S.A.",
+          "str_start_date": "2010-06-22"
+        },
+        {
+          "compe_number": "094",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "11758741",
+          "name": "Banco Finaxis S.A.",
+          "str_start_date": "2010-08-23"
+        },
+        {
+          "compe_number": "118",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "11932017",
+          "name": "Standard Chartered Bank (Brasil) S.A. Banco de Investimento",
+          "str_start_date": "2011-09-26"
+        },
+        {
+          "compe_number": "276",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "11970623",
+          "name": "Senff S.A. - Crédito, Financiamento e Investimento",
+          "str_start_date": "2018-06-12"
+        },
+        {
+          "compe_number": "092",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "12865507",
+          "name": "BRK S.A. Crédito, Financiamento e Investimento",
+          "str_start_date": "2010-07-01"
+        },
+        {
+          "compe_number": "047",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "13009717",
+          "name": "Banco do Estado de Sergipe S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "144",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13059145",
+          "name": "Bexs Banco de Câmbio S.A.",
+          "str_start_date": "2016-05-23"
+        },
+        {
+          "compe_number": "126",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13220493",
+          "name": "BR Partners Banco de Investimento S.A.",
+          "str_start_date": "2013-01-04"
+        },
+        {
+          "compe_number": "325",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13293225",
+          "name": "Órama Distribuidora de Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2019-05-31"
+        },
+        {
+          "compe_number": "301",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13370835",
+          "name": "BPP Instituição de Pagamento S.A.",
+          "str_start_date": "2018-09-26"
+        },
+        {
+          "compe_number": "173",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13486793",
+          "name": "BRL Trust Distribuidora de Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2016-11-28"
+        },
+        {
+          "compe_number": "119",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "13720915",
+          "name": "Banco Western Union do Brasil S.A.",
+          "str_start_date": "2011-10-10"
+        },
+        {
+          "compe_number": "309",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "14190547",
+          "name": "Cambionet Corretora de Câmbio Ltda.",
+          "str_start_date": "2018-11-21"
+        },
+        {
+          "compe_number": "254",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "14388334",
+          "name": "Parana Banco S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "268",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "14511781",
+          "name": "Barigui Companhia Hipotecária",
+          "str_start_date": "2017-12-21"
+        },
+        {
+          "compe_number": "107",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "15114366",
+          "name": "Banco Bocom BBM S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "412",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "15173776",
+          "name": "Banco Capital S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "124",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "15357060",
+          "name": "Banco Woori Bank do Brasil S.A.",
+          "str_start_date": "2012-08-09"
+        },
+        {
+          "compe_number": "149",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "15581638",
+          "name": "Facta Financeira S.A. - Crédito Financiamento e Investimento",
+          "str_start_date": "2015-07-08"
+        },
+        {
+          "compe_number": "197",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "16501555",
+          "name": "Stone Pagamentos S.A.",
+          "str_start_date": "2017-10-18"
+        },
+        {
+          "compe_number": "142",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "16944141",
+          "name": "Broker Brasil Corretora de Câmbio Ltda.",
+          "str_start_date": "2015-06-23"
+        },
+        {
+          "compe_number": "389",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "17184037",
+          "name": "Banco Mercantil do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "634",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "17351180",
+          "name": "Banco Triângulo S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "545",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "17352220",
+          "name": "Senso Corretora de Câmbio e Valores Mobiliários S.A.",
+          "str_start_date": "2010-09-27"
+        },
+        {
+          "compe_number": "132",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "17453575",
+          "name": "ICBC do Brasil Banco Múltiplo S.A.",
+          "str_start_date": "2013-09-26"
+        },
+        {
+          "compe_number": "298",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "17772370",
+          "name": "Vip's Corretora de Câmbio Ltda.",
+          "str_start_date": "2018-08-15"
+        },
+        {
+          "compe_number": "321",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "18188384",
+          "name": "Crefaz Sociedade de Crédito ao Microempreendedor e a Empresa de Pequeno Porte Lt",
+          "str_start_date": "2019-06-11"
+        },
+        {
+          "compe_number": "260",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "18236120",
+          "name": "Nu Pagamentos S.A.",
+          "str_start_date": "2017-10-10"
+        },
+        {
+          "compe_number": "129",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "18520834",
+          "name": "UBS Brasil Banco de Investimento S.A.",
+          "str_start_date": "2014-03-12"
+        },
+        {
+          "compe_number": "128",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "19307785",
+          "name": "MS Bank S.A. Banco de Câmbio",
+          "str_start_date": "2015-04-27"
+        },
+        {
+          "compe_number": "194",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "20155248",
+          "name": "Parmetal Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2017-10-25"
+        },
+        {
+          "compe_number": "310",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "22610500",
+          "name": "Vortx Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-10-18"
+        },
+        {
+          "compe_number": "163",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "23522214",
+          "name": "Commerzbank Brasil S.A. - Banco Múltiplo",
+          "str_start_date": "2016-08-10"
+        },
+        {
+          "compe_number": "280",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "23862762",
+          "name": "Avista S.A. Crédito, Financiamento e Investimento",
+          "str_start_date": "2018-05-10"
+        },
+        {
+          "compe_number": "146",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "24074692",
+          "name": "Guitta Corretora de Câmbio Ltda.",
+          "str_start_date": "2015-05-20"
+        },
+        {
+          "compe_number": "279",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "26563270",
+          "name": "Cooperativa de Crédito Rural de Primavera do Leste",
+          "str_start_date": "2018-06-05"
+        },
+        {
+          "compe_number": "182",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "27406222",
+          "name": "Dacasa Financeira S/A - Sociedade de Crédito, Financiamento e Investimento",
+          "str_start_date": "2017-08-09"
+        },
+        {
+          "compe_number": "278",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "27652684",
+          "name": "Genial Investimentos Corretora de Valores Mobiliários S.A.",
+          "str_start_date": "2018-05-14"
+        },
+        {
+          "compe_number": "271",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "27842177",
+          "name": "IB Corretora de Câmbio, Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-02-26"
+        },
+        {
+          "compe_number": "021",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "28127603",
+          "name": "Banestes S.A. Banco do Estado do Espírito Santo",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "246",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "28195667",
+          "name": "Banco ABC Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "292",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "28650236",
+          "name": "BS2 Distribuidora de Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2018-10-24"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "28719664",
+          "name": "B3 SA - Brasil, Bolsa, Balcão - Segmento Cetip UTVM",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "29011780",
+          "name": "Câmara Interbancária de Pagamentos - CIP C3",
+          "str_start_date": "2012-01-30"
+        },
+        {
+          "compe_number": "751",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "29030467",
+          "name": "Scotiabank Brasil S.A. Banco Múltiplo",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "208",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "30306294",
+          "name": "Banco BTG Pactual S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "746",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "30723886",
+          "name": "Banco Modal S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "241",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "31597552",
+          "name": "Banco Clássico S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "336",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "31872495",
+          "name": "Banco C6 S.A.",
+          "str_start_date": "2019-01-31"
+        },
+        {
+          "compe_number": "612",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "31880826",
+          "name": "Banco Guanabara S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "604",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "31895683",
+          "name": "Banco Industrial do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "505",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "32062580",
+          "name": "Banco Credit Suisse (Brasil) S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "329",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "32402502",
+          "name": "QI Sociedade de Crédito Direto S.A.",
+          "str_start_date": "2019-04-30"
+        },
+        {
+          "compe_number": "196",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "32648370",
+          "name": "Fair Corretora de Câmbio S.A.",
+          "str_start_date": "2017-09-11"
+        },
+        {
+          "compe_number": "300",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33042151",
+          "name": "Banco de la Nacion Argentina",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "477",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33042953",
+          "name": "Citibank N.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "266",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33132044",
+          "name": "Banco Cédula S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "122",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33147315",
+          "name": "Banco Bradesco BERJ S.A.",
+          "str_start_date": "2011-11-08"
+        },
+        {
+          "compe_number": "376",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33172537",
+          "name": "Banco J. P. Morgan S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "473",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33466988",
+          "name": "Banco Caixa Geral - Brasil S.A.",
+          "str_start_date": "2009-03-31"
+        },
+        {
+          "compe_number": "745",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33479023",
+          "name": "Banco Citibank S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "120",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33603457",
+          "name": "Banco Rodobens SA",
+          "str_start_date": "2012-02-06"
+        },
+        {
+          "compe_number": "265",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33644196",
+          "name": "Banco Fator S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "007",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "33657248",
+          "name": "Banco Nacional de Desenvolvimento Econômico e Social BNDES",
+          "str_start_date": "2014-06-30"
+        },
+        {
+          "compe_number": "188",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "33775974",
+          "name": "Ativa Investimentos S.A. Corretora de Títulos Câmbio e Valores",
+          "str_start_date": "2017-07-28"
+        },
+        {
+          "compe_number": "134",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "33862244",
+          "name": "BGC Liquidez Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2014-07-28"
+        },
+        {
+          "compe_number": "641",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "33870163",
+          "name": "Banco Alvorada S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "029",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "33885724",
+          "name": "Banco Itaú Consignado S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "243",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "33923798",
+          "name": "Banco Máxima S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "078",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "34111187",
+          "name": "Haitong Banco de Investimento do Brasil S.A.",
+          "str_start_date": "2008-07-31"
+        },
+        {
+          "compe_number": "111",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "36113876",
+          "name": "Oliveira Trust Distribuidora de Títulos e Valores Mobiliários S.A.",
+          "str_start_date": "2011-03-24"
+        },
+        {
+          "compe_number": "403",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "37880206",
+          "name": "CORA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+          "str_start_date": "2023-09-20"
+        },
+        {
+          "compe_number": "306",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "40303299",
+          "name": "Portopar Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2019-02-06"
+        },
+        {
+          "compe_number": "017",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "42272526",
+          "name": "BNY Mellon Banco S.A.",
+          "str_start_date": "2012-11-19"
+        },
+        {
+          "compe_number": "174",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "43180355",
+          "name": "Pernambucanas Financiadora S.A. Crédito, Financiamento e Investimento",
+          "str_start_date": "2017-11-21"
+        },
+        {
+          "compe_number": "495",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "44189447",
+          "name": "Banco de La Provincia de Buenos Aires",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "125",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "45246410",
+          "name": "Brasil Plural S.A. Banco Múltiplo",
+          "str_start_date": "2012-11-19"
+        },
+        {
+          "compe_number": "488",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "46518205",
+          "name": "JPMorgan Chase Bank, National Association",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "065",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "48795256",
+          "name": "Banco AndBank (Brasil) S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "492",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "49336860",
+          "name": "ING Bank N.V.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "145",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "50579044",
+          "name": "Levycam - Corretora de Câmbio e Valores Ltda.",
+          "str_start_date": "2015-06-16"
+        },
+        {
+          "compe_number": "250",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "50585090",
+          "name": "BCV - Banco de Crédito e Varejo S/A",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "494",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "51938876",
+          "name": "Banco de La Republica Oriental del Uruguay",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "253",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "52937216",
+          "name": "Bexs Corretora de Câmbio S/A",
+          "str_start_date": "2016-11-11"
+        },
+        {
+          "compe_number": "269",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "53518684",
+          "name": "HSBC Brasil S.A. Banco de Investimento",
+          "str_start_date": "2018-02-07"
+        },
+        {
+          "compe_number": "213",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "54403563",
+          "name": "Banco Arbi S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "54641030",
+          "name": "BMF Bovespa S.A. - Bolsa de Valores, Mercadorias e Futuros - Camara BMFBOVESPA",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "139",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "55230916",
+          "name": "Intesa Sanpaolo Brasil S.A. - Banco Múltiplo",
+          "str_start_date": "2015-05-08"
+        },
+        {
+          "compe_number": "018",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "57839805",
+          "name": "Banco Tricury S.A.",
+          "str_start_date": "2013-08-05"
+        },
+        {
+          "compe_number": "422",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "58160789",
+          "name": "Banco Safra S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "630",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "58497702",
+          "name": "Banco Smartbank S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "224",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "58616418",
+          "name": "Banco Fibra S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "600",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "59118133",
+          "name": "Banco Luso Brasileiro S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "623",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "59285411",
+          "name": "Banco Pan S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "204",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "59438325",
+          "name": "Banco Bradesco Cartões S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "655",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "59588111",
+          "name": "Banco Votorantim S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "479",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "60394079",
+          "name": "Banco ItauBank S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "456",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60498557",
+          "name": "Banco MUFG Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "464",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60518222",
+          "name": "Banco Sumitomo Mitsui Brasileiro S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "341",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60701190",
+          "name": "Itaú Unibanco  S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "237",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60746948",
+          "name": "Banco Bradesco S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "613",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60850229",
+          "name": "Omni Banco S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "652",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60872504",
+          "name": "Itaú Unibanco Holding S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "637",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "60889128",
+          "name": "Banco Sofisa S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": null,
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "60934221",
+          "name": "BMF Bovespa S/A - Bolsa de Valores, Mercadorias e Futuros - Camara Cambio",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "653",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61024352",
+          "name": "Banco Indusval S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "069",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61033106",
+          "name": "Banco Crefisa S.A.",
+          "str_start_date": "2005-11-18"
+        },
+        {
+          "compe_number": "370",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "61088183",
+          "name": "Banco Mizuho do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "249",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61182408",
+          "name": "Banco Investcred Unibanco S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "318",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61186680",
+          "name": "Banco BMG S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "626",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61348538",
+          "name": "Banco Ficsa S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "270",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "61444949",
+          "name": "Sagitur Corretora de Câmbio Ltda.",
+          "str_start_date": "2018-08-01"
+        },
+        {
+          "compe_number": "366",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61533584",
+          "name": "Banco Société Générale Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "113",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "61723847",
+          "name": "Magliano S.A. Corretora de Cambio e Valores Mobiliarios",
+          "str_start_date": "2011-11-28"
+        },
+        {
+          "compe_number": "131",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "61747085",
+          "name": "Tullett Prebon Brasil Corretora de Valores e Câmbio Ltda.",
+          "str_start_date": "2013-07-15"
+        },
+        {
+          "compe_number": "011",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "61809182",
+          "name": "Credit Suisse Hedging-Griffo Corretora de Valores S.A.",
+          "str_start_date": "2011-06-28"
+        },
+        {
+          "compe_number": "611",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "61820817",
+          "name": "Banco Paulista S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "755",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "62073200",
+          "name": "Bank of America Merrill Lynch Banco Múltiplo S.A.",
+          "str_start_date": "2007-11-09"
+        },
+        {
+          "compe_number": "089",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "62109566",
+          "name": "Cooperativa de Crédito Rural da Região da Mogiana",
+          "str_start_date": "2010-08-30"
+        },
+        {
+          "compe_number": "643",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "62144175",
+          "name": "Banco Pine S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "140",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "62169875",
+          "name": "Easynvest - Título Corretora de Valores SA",
+          "str_start_date": "2015-05-26"
+        },
+        {
+          "compe_number": "707",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "62232889",
+          "name": "Banco Daycoval S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "288",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "62237649",
+          "name": "Carol Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-07-05"
+        },
+        {
+          "compe_number": "101",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "62287735",
+          "name": "Renascença Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2010-04-22"
+        },
+        {
+          "compe_number": "487",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "62331228",
+          "name": "Deutsche Bank S.A. - Banco Alemão",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "233",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "62421979",
+          "name": "Banco Cifra S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "177",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "65913436",
+          "name": "Guide Investimentos S.A. Corretora de Valores",
+          "str_start_date": "2017-05-08"
+        },
+        {
+          "compe_number": "633",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "68900810",
+          "name": "Banco Rendimento S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "218",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "71027866",
+          "name": "Banco BS2 S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "169",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "71371686",
+          "name": "Banco Olé Bonsucesso Consignado S.A.",
+          "str_start_date": "2016-11-16"
+        },
+        {
+          "compe_number": "293",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "71590442",
+          "name": "Lastro RDV Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-09-10"
+        },
+        {
+          "compe_number": "285",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "71677850",
+          "name": "Frente Corretora de Câmbio Ltda.",
+          "str_start_date": "2018-09-25"
+        },
+        {
+          "compe_number": "080",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "73622748",
+          "name": "BT Corretora de Câmbio Ltda.",
+          "str_start_date": "2010-11-18"
+        },
+        {
+          "compe_number": "753",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "74828799",
+          "name": "Novo Banco Continental S.A. - Banco Múltiplo",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "222",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "75647891",
+          "name": "Banco Credit Agrícole Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "281",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "76461557",
+          "name": "Cooperativa de Crédito Rural Coopavel",
+          "str_start_date": "2018-11-05"
+        },
+        {
+          "compe_number": "754",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "76543115",
+          "name": "Banco Sistema S.A.",
+          "str_start_date": "2015-07-15"
+        },
+        {
+          "compe_number": "098",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "78157146",
+          "name": "Credialiança Cooperativa de Crédito Rural",
+          "str_start_date": "2011-01-18"
+        },
+        {
+          "compe_number": "610",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "78626983",
+          "name": "Banco VR S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "712",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "78632767",
+          "name": "Banco Ourinvest S.A.",
+          "str_start_date": "2014-01-28"
+        },
+        {
+          "compe_number": "010",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "81723108",
+          "name": "Credicoamo Crédito Rural Cooperativa",
+          "str_start_date": "2012-12-10"
+        },
+        {
+          "compe_number": "283",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "89960090",
+          "name": "RB Capital Investimentos Distribuidora de Títulos e Valores Mobiliários Ltda.",
+          "str_start_date": "2018-07-05"
+        },
+        {
+          "compe_number": "033",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "90400888",
+          "name": "Banco Santander (Brasil) S. A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "217",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "91884981",
+          "name": "Banco John Deere S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "041",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "92702067",
+          "name": "Banco do Estado do Rio Grande do Sul S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "117",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "92856905",
+          "name": "Advanced Corretora de Câmbio Ltda.",
+          "str_start_date": "2011-10-03"
+        },
+        {
+          "compe_number": "654",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "92874270",
+          "name": "Banco A. J. Renner S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "212",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "92894922",
+          "name": "Banco Original S.A.",
+          "str_start_date": "2002-04-22"
+        },
+        {
+          "compe_number": "289",
+          "is_active": true,
+          "is_compe_participant": false,
+          "ispb_number": "94968518",
+          "name": "Decyseo Corretora de Câmbio Ltda.",
+          "str_start_date": "2019-03-14"
+        }
+      ]
+    },
+    "banco_brasil": {
+      "status": "sucesso",
+      "resultado": {
+        "00000000": {
+          "compe_number": "001",
+          "is_active": true,
+          "is_compe_participant": true,
+          "ispb_number": "00000000",
+          "name": "Banco do Brasil S.A.",
+          "str_start_date": "2002-04-22"
+        }
+      }
+    },
+    "boleto": {
+      "status": "erro",
+      "erro": "[QiTechError] 400 - Falha na chamada à QiTech"
+    },
+    "bolepix": {
+      "status": "erro",
+      "erro": "[QiTechError] 404 - Falha na chamada à QiTech"
+    },
+    "consulta_pix": {
+      "status": "erro",
+      "erro": "[QiTechError] 404 - Falha na chamada à QiTech"
+    },
+    "envio_pix": {
+      "status": "erro",
+      "erro": "[QiTechError] 400 - Falha na chamada à QiTech"
+    },
+    "ted": {
+      "status": "erro",
+      "erro": "[QiTechError] 400 - Falha na chamada à QiTech"
+    },
+    "ted_agendado": {
+      "status": "erro",
+      "erro": "[QiTechError] 404 - Falha na chamada à QiTech"
+    },
+    "transfer_auto": {
+      "status": "erro",
+      "erro": "[QiTechError] 401 - Falha na chamada à QiTech"
+    },
+    "upload_doc": {
+      "status": "erro",
+      "erro": "[QiTechError] 400 - Falha na chamada à QiTech"
+    }
+  },
+  "funcionalidades_funcionando": [
+    "instituicoes",
+    "banco_brasil"
+  ],
+  "funcionalidades_com_erro": [
+    "boleto",
+    "bolepix",
+    "consulta_pix",
+    "envio_pix",
+    "ted",
+    "ted_agendado",
+    "transfer_auto",
+    "upload_doc"
+  ]
+}
