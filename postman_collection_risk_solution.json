@@ -1,0 +1,32 @@
+{
+  "info": {
+    "name": "Risk Solution - QI Tech (minimal)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Send Natural Person",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{base_url}}/natural_person?analyze=true",
+        "body": { "mode": "raw", "raw": "{\n  \"id\": \"id-1\",\n  \"document_number\": \"123.456.789-12\"\n}" }
+      }
+    },
+    {
+      "name": "Get Natural Person",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "{{api_key}}" } ],
+        "url": "{{base_url}}/natural_person/{{id}}"
+      }
+    }
+  ],
+  "variable": [
+    { "key": "api_key", "value": "EXAMPLE-OF-API-KEY" },
+    { "key": "base_url", "value": "https://api.sandbox.caas.qitech.app/onboarding" }
+  ]
+}

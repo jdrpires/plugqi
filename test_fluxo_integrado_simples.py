@@ -6,7 +6,9 @@ Foca nas funcionalidades que estão funcionando
 
 import json
 import uuid
-from datetime import datetime, timedelta
+import os
+from risk_solution import RiskSolutionClient
+from datetime import datetime, timedelta, timezone
 from plugqi import PlugQi
 
 def main():
@@ -15,6 +17,115 @@ def main():
     
     # Inicializar PlugQi
     plugqi = PlugQi()
+
+    # RISK SOLUTION - bloco inicial de integração e saídas
+    print("\n🔒 RISK SOLUTION - INTEGRATION CHECK")
+    api_key = os.environ.get('QITECH_API_KEY', 'EXAMPLE-OF-API-KEY')
+    rs_client = RiskSolutionClient(api_key=api_key)
+
+    sample_natural = {
+        'id': str(uuid.uuid4()),
+        'registration_id': 'reg-' + str(uuid.uuid4()),
+        'registration_date': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+        'client_category': 'individual',
+        'name': 'Fulano de Tal',
+        'document_number': '123.456.789-12',
+        'birthdate': '1990-05-20',
+        'gender': 'male',
+        'nationality': 'BRA',
+        'mother_name': 'Maria de Tal',
+        'father_name': 'José de Tal',
+        'monthly_income': 500000,  # R$5.000,00 in cents
+        'declared_assets': 2000000,  # R$20.000,00 in cents
+        'occupation': 'Analista de Sistemas',
+        'emails': [{ 'email': 'fulano.tal@example.com', 'validation_type': 'company_email' }],
+        'phones': [
+            { 'international_dial_code': '55', 'area_code': '11', 'number': '999999999', 'type': 'mobile' }
+        ],
+        'address': {
+            'street': 'Rua Exemplo', 'number': '123', 'neighborhood': 'Centro', 'city': 'São Paulo',
+            'uf': 'SP', 'postal_code': '01001-000', 'country': 'BRA'
+        },
+        'source': { 'channel': 'app', 'platform': 'ios', 'ip': '127.0.0.1', 'session_id': str(uuid.uuid4()) }
+    }
+
+    class _SimResp:
+        def __init__(self, code=200, text='{"simulated": true}'):
+            self.status_code = code
+            self.text = text
+
+    simulate = api_key.startswith('EXAMPLE') or api_key in (None, '', 'EXAMPLE-OF-API-KEY')
+
+    try:
+        print("\n---> RISK: Sending Natural Person payload:")
+        print(json.dumps(sample_natural, indent=2, ensure_ascii=False))
+
+        if simulate:
+            resp_np = _SimResp(200, '{"simulated": true, "id": "' + sample_natural['id'] + '"}')
+        else:
+            resp_np = rs_client.send_natural_person(sample_natural, analyze=False)
+
+        print(f"🔹 Natural Person HTTP {resp_np.status_code} received:")
+        try:
+            parsed = json.loads(resp_np.text)
+            print(json.dumps(parsed, indent=2, ensure_ascii=False))
+        except Exception:
+            print(resp_np.text)
+    except Exception as e:
+        print(f"⚠️ Natural Person send failed: {e}")
+
+    sample_legal = {
+        'id': str(uuid.uuid4()),
+        'registration_id': 'reg-' + str(uuid.uuid4()),
+        'registration_date': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+        'client_category': 'company',
+        'legal_name': 'Empresa Exemplo LTDA',
+        'trading_name': 'Empresa Exemplo',
+        'document_number': '08.104.627/0001-02',
+        'foundation_date': '2010-03-15',
+        'website': 'https://empresaexemplo.example',
+        'activity': 'Comércio varejista',
+        'activity_code': '47.11-3-01',
+        'merchant_category_code': '5411',
+        'tier': 'small',
+        'annual_revenues': 25000000,  # R$250.000,00 in cents
+        'emails': [{ 'email': 'contato@empresaexemplo.example', 'validation_type': 'company_email' }],
+        'phones': [
+            { 'international_dial_code': '55', 'area_code': '11', 'number': '33221100', 'type': 'commercial' }
+        ],
+        'address': {
+            'street': 'Av. Empresarial', 'number': '500', 'neighborhood': 'Bairro Industrial', 'city': 'São Paulo',
+            'uf': 'SP', 'postal_code': '02000-000', 'country': 'BRA'
+        },
+        'source': { 'channel': 'portal', 'platform': 'web', 'ip': '127.0.0.1', 'session_id': str(uuid.uuid4()) },
+        'partners': [
+            { 'name': 'Sócio Um', 'document_number': '987.654.321-00', 'birthdate': '1980-01-01', 'emails': [{'email':'socio1@example.com'}] }
+        ]
+    }
+
+    try:
+        print("\n---> RISK: Sending Legal Person payload:")
+        print(json.dumps(sample_legal, indent=2, ensure_ascii=False))
+
+        if simulate:
+            resp_lp = _SimResp(200, '{"simulated": true, "id": "' + sample_legal['id'] + '"}')
+        else:
+            resp_lp = rs_client.send_legal_person(sample_legal, analyze=False)
+
+        print(f"🔹 Legal Person HTTP {resp_lp.status_code} received:")
+        try:
+            parsed = json.loads(resp_lp.text)
+            print(json.dumps(parsed, indent=2, ensure_ascii=False))
+        except Exception:
+            print(resp_lp.text)
+    except Exception as e:
+        print(f"⚠️ Legal Person send failed: {e}")
+
+    try:
+        demo_sig = rs_client.compute_webhook_signature('/webhook', 'POST', '{"k":"v"}', 'secret')
+        print(f"🔐 Demo webhook signature: {demo_sig}")
+    except Exception:
+        pass
     
     # 1. Health Check
     print("\n1️⃣ VERIFICANDO CONECTIVIDADE...")
@@ -146,7 +257,7 @@ def main():
     }
     
     # Salvar relatório
-    with open("relatorio_teste_integrado_simples.json", "w") as f:
+    with open("relatorio_teste_integrado_simples.json", "w", encoding="utf-8") as f:
         json.dump(relatorio, f, indent=2, ensure_ascii=False)
     
     print("✅ Conectividade: OK")

@@ -1,0 +1,9 @@
+{
+  "account_info": {
+    "account_branch": "0001",
+    "account_digit": "6",
+    "account_number": "2096177"
+  },
+  "account_request_key": "ac57f361-667e-4fdd-837b-4bcd82b169c3",
+  "account_request_status": "pending_bacen_validation"
+}

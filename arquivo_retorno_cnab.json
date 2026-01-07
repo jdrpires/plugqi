@@ -5,7 +5,7 @@
     "literal_retorno": "RETORNO",
     "codigo_servico": "01",
     "literal_servico": "COBRANCA",
-    "data_geracao": "171025",
+    "data_geracao": "060126",
     "sequencial_arquivo": "000001"
   },
   "detalhes": [
@@ -14,11 +14,11 @@
       "nosso_numero": "000000001",
       "codigo_ocorrencia": "06",
       "descricao_ocorrencia": "LIQUIDACAO",
-      "data_ocorrencia": "171025",
+      "data_ocorrencia": "060126",
       "valor_titulo": "0000000015075",
       "valor_pago": "0000000015075",
       "codigo_barras": "32993126700000150750001090000000000168670830",
-      "data_credito": "171025"
+      "data_credito": "060126"
     }
   ],
   "trailer": {
