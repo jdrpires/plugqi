@@ -1,0 +1,10 @@
+{
+  "id": "RiskSolution-Env",
+  "name": "Risk Solution - Environment",
+  "values": [
+    { "key": "api_key", "value": "EXAMPLE-OF-API-KEY" },
+    { "key": "base_url", "value": "https://api.sandbox.caas.qitech.app/onboarding" },
+    { "key": "webhook_url", "value": "http://localhost:8000/webhooks/qitech/onboarding" },
+    { "key": "webhook_secret", "value": "change-me" }
+  ]
+}

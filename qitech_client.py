@@ -238,6 +238,14 @@ class QiTechClient:
         """
         return self._request("POST", endpoint, files=files, params=params, file_md5=md5_hash)
 
+    def make_request(self, method: str, endpoint: str, 
+                     json_body: Optional[Dict[str, Any]] = None, 
+                     params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """
+        Alias para compatibilidade com conectores que utilizam 'make_request'.
+        """
+        return self._request(method, endpoint, json_body=json_body, params=params)
+
     # ---------- Helper público para gerar headers de autenticação (útil para Postman/local proxy) ----------
     def auth_headers_for(
         self,

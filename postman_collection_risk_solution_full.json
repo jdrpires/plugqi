@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Risk Solution - QI Tech (full)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Send Natural Person",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{base_url}}/natural_person",
+        "body": { "mode": "raw", "raw": "{\n  \"registration_id\": \"reg-12345\",\n  \"document_number\": \"123.456.789-12\"\n}" }
+      }
+    },
+    {
+      "name": "Send Legal Person",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{base_url}}/legal_person",
+        "body": { "mode": "raw", "raw": "{\n  \"registration_id\": \"reg-12345\",\n  \"document_number\": \"08.104.627/0001-02\"\n}" }
+      }
+    },
+    {
+      "name": "Get Natural Person",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "{{api_key}}" } ],
+        "url": "{{base_url}}/natural_person/{{id}}"
+      }
+    },
+    {
+      "name": "Webhook POST (local)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "Signature", "value": "{{webhook_signature}}" } ],
+        "url": "{{webhook_url}}",
+        "body": { "mode": "raw", "raw": "{\n  \"registration_id\": \"reg-12345\",\n  \"natural_person_id\": \"np-999\",\n  \"analysis_status\": \"APPROVED\",\n  \"event_date\": \"2026-01-08T12:02:41Z\",\n  \"reason\": \"Análise automatizada OK\"\n}" }
+      }
+    },
+    {
+      "name": "Get webhook status (local)",
+      "request": {
+        "method": "GET",
+        "url": "{{status_url}}",
+        "header": [],
+        "url": {
+          "raw": "{{status_url}}?id_registro=reg-12345",
+          "host": ["{{status_url}}"],
+          "query": [ { "key": "id_registro", "value": "reg-12345" } ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "api_key", "value": "EXAMPLE-OF-API-KEY" },
+    { "key": "base_url", "value": "https://api.sandbox.caas.qitech.app/onboarding" },
+    { "key": "webhook_url", "value": "http://localhost:8000/webhooks/qitech/onboarding" },
+    { "key": "status_url", "value": "http://localhost:8000/webhooks/qitech/status" },
+    { "key": "webhook_secret", "value": "change-me" }
+  ]
+}

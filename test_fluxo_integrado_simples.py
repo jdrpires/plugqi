@@ -10,6 +10,9 @@ import os
 from risk_solution import RiskSolutionClient
 from datetime import datetime, timedelta, timezone
 from plugqi import PlugQi
+import subprocess
+import sys
+import os
 
 def main():
     print("🚀 TESTE INTEGRADO SIMPLIFICADO PLUGQI")
@@ -120,6 +123,18 @@ def main():
             print(resp_lp.text)
     except Exception as e:
         print(f"⚠️ Legal Person send failed: {e}")
+
+    # Optionally run webhook POST+GET test against local listener
+    run_webhook_test = os.environ.get('RUN_WEBHOOK_TEST', 'false').lower() in ('1', 'true', 'yes')
+    if run_webhook_test:
+        try:
+            print("\n🔁 Executando teste de webhook local (examples/qitech_webhook_test.py)")
+            # ensure project root on PYTHONPATH
+            env = os.environ.copy()
+            env['PYTHONPATH'] = env.get('PYTHONPATH', '') + os.pathsep + os.getcwd()
+            subprocess.run([sys.executable, os.path.join('examples','qitech_webhook_test.py')], check=True, env=env)
+        except Exception as e:
+            print(f"⚠️ Falha ao executar teste de webhook: {e}")
 
     try:
         demo_sig = rs_client.compute_webhook_signature('/webhook', 'POST', '{"k":"v"}', 'secret')
