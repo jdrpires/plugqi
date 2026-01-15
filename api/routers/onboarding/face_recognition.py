@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, Form, Depends, Request, Body
+from fastapi import APIRouter, UploadFile, File, HTTPException, Depends, Request, Body
 from api.schemas import FaceClientSessionRequest
 import shutil
 import os
@@ -24,7 +24,6 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 @router.post("/face_recognition")
 async def send_document_face_recognition(
     file: UploadFile = File(...),
-    file_type: str = Form(None),
     request: Request = None,
     api_key: dict = Depends(get_api_key),
 ):
@@ -34,8 +33,7 @@ async def send_document_face_recognition(
 
     try:
         content = await file.read()
-        file_type_det = file_type or os.path.splitext(file.filename)[1].lstrip(".") or "jpeg"
-
+        file_type_det = os.path.splitext(file.filename)[1].lstrip(".") or "jpeg"
         requisicao = {
             "file_type": file_type_det,
             "filename": file.filename,
@@ -45,7 +43,7 @@ async def send_document_face_recognition(
         start = time.perf_counter()
         try:
             document_b64 = base64.b64encode(content).decode("utf-8")
-            resp = plugqi.qitech_face_recognition.analyze_image(image_b64=document_b64, file_type=file_type_det)
+            resp = plugqi.qitech_face_recognition.analyze_image(image_b64=document_b64)
             duracao_ms = int((time.perf_counter() - start) * 1000)
             codigo_status = 200
 
@@ -125,7 +123,8 @@ async def send_document_face_recognition(
                 pass
 
             if hasattr(e, "status"):
-                raise HTTPException(status_code=getattr(e, "status", 500), detail=str(e))
+                detail = payload if payload is not None else str(e)
+                raise HTTPException(status_code=getattr(e, "status", 500), detail=detail)
             raise HTTPException(status_code=500, detail=str(e))
 
     except HTTPException:
@@ -201,7 +200,8 @@ async def face_recognition_client_session(payload: FaceClientSessionRequest = Bo
             pass
 
         if hasattr(e, "status"):
-            raise HTTPException(status_code=getattr(e, "status", 500), detail=str(e))
+            detail = payload_err if payload_err is not None else str(e)
+            raise HTTPException(status_code=getattr(e, "status", 500), detail=detail)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -275,5 +275,6 @@ async def get_document_face_recognition_file(image_id: str, request: Request, ap
             pass
 
         if hasattr(e, "status"):
-            raise HTTPException(status_code=getattr(e, "status", 500), detail=str(e))
+            detail = payload if payload is not None else str(e)
+            raise HTTPException(status_code=getattr(e, "status", 500), detail=detail)
         raise HTTPException(status_code=500, detail=str(e))

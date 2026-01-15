@@ -16,10 +16,11 @@ class QitechDeviceScanClient:
     """
 
     def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None):
-        # Prefer environment names: device_scan_mobile_token, DEVICE_SCAN_API_KEY, QITECH_DEVICE_SCAN_KEY
+        # Prefer environment names: device_scan_key, device_scan_mobile_token, DEVICE_SCAN_API_KEY, QITECH_DEVICE_SCAN_KEY
         self.api_key = (
             api_key
             or os.getenv("DEVICE_SCAN_API_KEY")
+            or os.getenv("device_scan_key")
             or os.getenv("device_scan_mobile_token")
             or os.getenv("QITECH_DEVICE_SCAN_KEY")
             or os.getenv("QITECH_API_KEY")
@@ -29,7 +30,7 @@ class QitechDeviceScanClient:
         self.base_url = (base_url or env_base or "https://api.sandbox.caas.qitech.app/device_scan").rstrip("/")
 
         if not self.api_key:
-            raise ValueError("QITECH device_scan key não definido (device_scan_mobile_token ou DEVICE_SCAN_API_KEY).")
+            raise ValueError("QITECH device_scan key não definido (device_scan_key, device_scan_mobile_token ou DEVICE_SCAN_API_KEY).")
 
         try:
             self.session = QiTechClient._build_session()

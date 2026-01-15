@@ -50,22 +50,22 @@ class RiskLegalPersonRequest(BaseModel):
     id: Optional[str] = None
     registration_id: Optional[str] = None
     registration_date: Optional[str] = None
-    client_category: str = "company"
-    legal_name: str
-    trading_name: str
-    document_number: str
-    foundation_date: str
+    client_category: Optional[str] = "company"
+    legal_name: Optional[str] = None
+    trading_name: Optional[str] = None
+    document_number: Optional[str] = None
+    foundation_date: Optional[str] = None
     website: Optional[str] = None
-    activity: str
-    activity_code: str
-    merchant_category_code: str
-    tier: str = "small"
-    annual_revenues: int
-    emails: List[EmailSchema]
-    phones: List[PhoneSchema]
-    address: AddressSchema
-    source: Dict[str, Any]
-    partners: List[Dict[str, Any]]
+    activity: Optional[str] = None
+    activity_code: Optional[str] = None
+    merchant_category_code: Optional[str] = None
+    tier: Optional[str] = "small"
+    annual_revenues: Optional[int] = None
+    emails: Optional[List[EmailSchema]] = None
+    phones: Optional[List[PhoneSchema]] = None
+    address: Optional[AddressSchema] = None
+    source: Optional[Dict[str, Any]] = None
+    partners: Optional[List[Dict[str, Any]]] = None
 
 # --- Escrow Account ---
 

@@ -1,4 +1,5 @@
 import os
+import base64
 from typing import Any, Dict, Optional
 import requests
 from qitech_client import QiTechError, QiTechClient
@@ -44,7 +45,7 @@ class QitechFaceRecognitionClient:
             h["Content-Type"] = content_type
         return h
 
-    def analyze_image(self, image_b64: str, file_type: Optional[str] = None, timeout: int = DEFAULT_TIMEOUT) -> Dict[str, Any]:
+    def analyze_image(self, image_b64: str, timeout: int = DEFAULT_TIMEOUT) -> Dict[str, Any]:
         """Envia imagem (base64) para processamento de face recognition.
 
         Envia JSON com a chave `image` conforme documentação CAAS:
@@ -61,9 +62,18 @@ class QitechFaceRecognitionClient:
         else:
             url = f"{self.base_url}/face_recognition/image"
 
+        # Valida base64 e assegura que seja JPG ou PNG antes de enviar ao QiTech
+        import binascii
+        try:
+            img_bytes = base64.b64decode(image_b64, validate=True)
+        except (binascii.Error, TypeError):
+            raise QiTechError(400, "Invalid base64", {"title":"Invalid base64","description":"Provided base64 is not a valid JPG OR PNG image","image_status":"invalid_base64"})
+
+        # Verifica magic bytes para PNG/JPEG
+        if not (img_bytes.startswith(b"\x89PNG\r\n\x1a\n") or img_bytes.startswith(b"\xff\xd8")):
+            raise QiTechError(400, "Invalid base64", {"title":"Invalid base64","description":"Provided base64 is not a valid JPG OR PNG image","image_status":"invalid_base64"})
+
         payload: Dict[str, Any] = {"image": image_b64}
-        if file_type:
-            payload["file_type"] = file_type
         headers = self._headers("application/json")
 
         try:

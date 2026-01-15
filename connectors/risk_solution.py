@@ -47,10 +47,7 @@ class RiskSolutionClient:
         if self.is_mock:
             return self._mock_response(payload, is_legal=False)
             
-        if 'document_number' not in payload:
-            raise ValueError('document_number is required in payload')
-        if not self._validate_cpf(payload['document_number']):
-            raise ValueError('document_number must be a CPF formatted as ###.###.###-##')
+        # Removidas validações - deixar QiTech validar
         url = f"{self.base_url}natural_person"
         params = {'analyze': str(analyze).lower()}
         return requests.post(url, json=payload, headers=self.headers, params=params)
@@ -59,10 +56,7 @@ class RiskSolutionClient:
         if self.is_mock:
             return self._mock_response(payload, is_legal=True)
 
-        if 'document_number' not in payload:
-            raise ValueError('document_number is required in payload')
-        if not self._validate_cnpj(payload['document_number']):
-            raise ValueError('document_number must be a CNPJ formatted as ##.###.###/####-##')
+        # Removidas validações - deixar QiTech validar
         url = f"{self.base_url}legal_person"
         params = {'analyze': str(analyze).lower()}
         return requests.post(url, json=payload, headers=self.headers, params=params)
