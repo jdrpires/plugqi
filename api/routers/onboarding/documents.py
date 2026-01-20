@@ -20,7 +20,7 @@ plugqi = PlugQi()
 UPLOAD_DIR = "temp_uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-@router.post("/upload", response_model=DocumentUploadResponse)
+@router.post("/upload", response_model=DocumentUploadResponse, include_in_schema=False)
 async def upload_document(file: UploadFile = File(...)):
     """
     Upload a document using PlugQi Document Connector.
@@ -55,7 +55,7 @@ async def upload_document(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/ocr")
+@router.post("/ocr", include_in_schema=False)
 async def send_document_ocr(
     file: UploadFile = File(...),
     template: str = Form(...),
@@ -179,7 +179,7 @@ async def send_document_ocr(
 
 
 
-@router.get("/ocr/{image_id}/file")
+@router.get("/ocr/{image_id}/file", include_in_schema=False)
 async def get_document_ocr_file(image_id: str, request: Request, api_key: dict = Depends(get_api_key)):
     """Recupera arquivo ou resultado do OCR pela `image_id` retornada no envio."""
     if not plugqi.qitech_ocr:

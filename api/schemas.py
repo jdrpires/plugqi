@@ -66,6 +66,7 @@ class RiskLegalPersonRequest(BaseModel):
     address: Optional[AddressSchema] = None
     source: Optional[Dict[str, Any]] = None
     partners: Optional[List[Dict[str, Any]]] = None
+    legal_representatives: Optional[List[Dict[str, Any]]] = None
 
 # --- Escrow Account ---
 

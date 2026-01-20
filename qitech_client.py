@@ -184,6 +184,14 @@ class QiTechClient:
         # --- 3) Envia request com o mesmo relative_url ---
         url = f"{self.base_url}{relative_url}"
 
+        # Capture the exact encoded body that will be sent (for debugging)
+        sent_body_text = None
+        if content_type_json and encoded_body:
+            try:
+                sent_body_text = encoded_body.decode("utf-8")
+            except Exception:
+                sent_body_text = None
+
         try:
             if files:
                 resp = self.session.request(method="POST", url=url, headers=headers, files=files, timeout=timeout)
@@ -210,6 +218,12 @@ class QiTechClient:
                 payload = resp.json()
             except ValueError:
                 payload = {"raw": resp.text}
+            # Attach the exact request body for debugging (do not leak in production)
+            try:
+                if sent_body_text:
+                    payload["_request_body"] = sent_body_text
+            except Exception:
+                pass
             raise QiTechError(resp.status_code, "Falha na chamada à QiTech", payload)
 
     # ---------- Métodos públicos ----------

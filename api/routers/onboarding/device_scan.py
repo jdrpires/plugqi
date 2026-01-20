@@ -5,7 +5,7 @@ import json
 from plugqi import PlugQi
 from api.auth import get_api_key
 from api.db import insert_qi_device_scan
-
+ 
 router = APIRouter(prefix="/device_scan", tags=["DeviceScan"])
 plugqi = PlugQi()
 
