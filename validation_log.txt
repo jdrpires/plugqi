@@ -1,0 +1,43 @@
+🏦 VALIDATING BANKING CONNECTIVITY (JWT/PEM) - REAL CALLS
+============================================================
+✅ PlugQi Initialized with Base URL: https://api-auth.sandbox.qitech.app
+
+1️⃣  Testing /financial_institution (List Banks)...
+   🎉 SUCCESS! Found 2 banks.
+   📝 Example: Banco do Brasil S.A.
+
+2️⃣  Testing /account_request/escrow (Connectivity)...
+   ℹ️ Request executed. Exception: [QiTechError] 400 - Falha na chamada à QiTech...
+      Payload: {
+  "data": "{\"title\": \"Schema Validator Error\", \"description\": \"{'account_owner': {'document_number': '000.000.000-00', 'email': 'test@example.com', 'birthdate': '2000-01-01', 'name': 'Test', 'documents': {}, 'face': 'test-key'}} is not valid under any of the given schemas\", \"translation\": \"Payload Invalido\", \"extra_fields\": {}, \"code\": \"QIT000001\"}",
+  "title": "Schema Validator Error",
+  "description": "{'account_owner': {'document_number': '000.000.000-00', 'email': 'test@example.com', 'birthdate': '2000-01-01', 'name': 'Test', 'documents': {}, 'face': 'test-key'}} is not valid under any of the given schemas",
+  "translation": "Payload Invalido",
+  "extra_fields": {},
+  "code": "QIT000001"
+}
+
+3️⃣  Testing /pix_key (Connectivity)...
+   ℹ️ Request executed. Exception: [QiTechError] 400 - Falha na chamada à QiTech
+      Payload: {
+  "data": "{\"title\": \"Bad Request\", \"description\": \"Invalid document sent 00000000000000000000000000000000.\", \"translation\": \"Documento enviado e invalido 00000000000000000000000000000000.\", \"extra_fields\": {}, \"code\": \"PIX000061\"}",
+  "title": "Bad Request",
+  "description": "Invalid document sent 00000000000000000000000000000000.",
+  "translation": "Documento enviado e invalido 00000000000000000000000000000000.",
+  "extra_fields": {},
+  "code": "PIX000061"
+}
+
+4️⃣  Testing /ted (Connectivity)...
+   ℹ️ Request executed. Exception: [QiTechError] 404 - Falha na chamada à QiTech
+      Payload: {
+  "data": "{\"title\": \"Not Found\", \"description\": \"Account not found for the given key: 00000000-0000-0000-0000-000000000000\", \"translation\": \"Conta nao encontrada para a chave fornecida: 00000000-0000-0000-0000-000000000000\", \"extra_fields\": {}, \"code\": \"TED000009\"}",
+  "title": "Not Found",
+  "description": "Account not found for the given key: 00000000-0000-0000-0000-000000000000",
+  "translation": "Conta nao encontrada para a chave fornecida: 00000000-0000-0000-0000-000000000000",
+  "extra_fields": {},
+  "code": "TED000009"
+}
+
+============================================================
+🏁 Validation Complete.

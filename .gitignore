@@ -4,3 +4,18 @@ keys/
 __pycache__/
 *.pyc
 .idea
+
+# Ignore Python virtual environment folders (common names)
+venv/
+ENV/
+env/
+/.venv/
+
+# Ignore local virtual environment created by VS Code
+.vscode/
+
+# Optional: ignore installed packages and pip cache
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/

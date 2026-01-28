@@ -1,9 +1,9 @@
 {
   "account_info": {
     "account_branch": "0001",
-    "account_digit": "9",
-    "account_number": "1262010"
+    "account_digit": "1",
+    "account_number": "5868787"
   },
-  "account_request_key": "5e5e3076-2fb0-4430-833f-acdf0f7ad3cf",
-  "account_request_status": "pending_kyc_analysis"
+  "account_request_key": "d2c4c645-9b77-4c94-97bc-8a2924bbfaa0",
+  "account_request_status": "pending_bacen_validation"
 }

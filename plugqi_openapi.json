@@ -1,0 +1,74 @@
+
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "PlugQi Minimal API",
+		"version": "0.0.1",
+		"description": "Minimal OpenAPI used to expose escrow-related schemas for Swagger UI"
+	},
+	"paths": {},
+	"components": {
+		"schemas": {
+			"AddressSchema": {
+				"type": "object",
+				"properties": {
+					"street": {"type": "string"},
+					"number": {"type": "string"},
+					"neighborhood": {"type": "string"},
+					"city": {"type": "string"},
+					"uf": {"type": "string"},
+					"postal_code": {"type": "string"},
+					"country": {"type": "string"},
+					"complement": {"type": ["string", "null"]}
+				}
+			},
+			"PhoneSchema": {
+				"type": "object",
+				"properties": {
+					"international_dial_code": {"type": "string"},
+					"area_code": {"type": "string"},
+					"number": {"type": "string"},
+					"type": {"type": "string"}
+				}
+			},
+			"EmailSchema": {
+				"type": "object",
+				"properties": {
+					"email": {"type": "string", "format": "email"},
+					"validation_type": {"type": "string"}
+				}
+			},
+			"LegalRepresentative": {
+				"type": "object",
+				"properties": {
+					"name": {"type": "string"},
+					"individual_document_number": {"type": ["string", "null"]},
+					"document_number": {"type": ["string", "null"]},
+					"birth_date": {"type": ["string", "null"]},
+					"birthdate": {"type": ["string", "null"]},
+					"email": {"type": ["string", "null"], "format": "email"},
+					"address": {"$ref": "#/components/schemas/AddressSchema"},
+					"phone": {"$ref": "#/components/schemas/PhoneSchema"},
+					"is_pep": {"type": "boolean"},
+					"marital_status": {"type": ["string", "null"]},
+					"mother_name": {"type": ["string", "null"]},
+					"nationality": {"type": ["string", "null"]},
+					"person_type": {"type": ["string", "null"]},
+					"documents": {"type": ["object", "null"]},
+					"face": {"type": ["string", "null"]}
+				}
+			},
+			"EscrowPJRequest": {
+				"type": "object",
+				"required": ["company_document_number", "email", "foundation_date", "name", "legal_representatives"],
+				"properties": {
+					"company_document_number": {"type": "string"},
+					"email": {"type": "string", "format": "email"},
+					"foundation_date": {"type": "string"},
+					"name": {"type": "string"},
+					"legal_representatives": {"type": "array", "items": {"$ref": "#/components/schemas/LegalRepresentative"}}
+				}
+			}
+		}
+	}
+}

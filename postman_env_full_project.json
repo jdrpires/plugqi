@@ -1,0 +1,13 @@
+{
+  "id": "PlugQi-Full-Env",
+  "name": "PlugQi - Full Env",
+  "values": [
+    { "key": "api_key", "value": "EXAMPLE-OF-API-KEY" },
+    { "key": "base_url", "value": "https://api.sandbox.caas.qitech.app/onboarding" },
+    { "key": "api_base", "value": "https://api.sandbox.caas.qitech.app" },
+    { "key": "webhook_url", "value": "http://localhost:8000/webhooks/qitech/onboarding" },
+    { "key": "status_url", "value": "http://localhost:8000/webhooks/qitech/status" },
+    { "key": "webhook_secret", "value": "change-me" },
+    { "key": "analyze", "value": "false" }
+  ]
+}

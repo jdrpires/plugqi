@@ -184,6 +184,14 @@ class QiTechClient:
         # --- 3) Envia request com o mesmo relative_url ---
         url = f"{self.base_url}{relative_url}"
 
+        # Capture the exact encoded body that will be sent (for debugging)
+        sent_body_text = None
+        if content_type_json and encoded_body:
+            try:
+                sent_body_text = encoded_body.decode("utf-8")
+            except Exception:
+                sent_body_text = None
+
         try:
             if files:
                 resp = self.session.request(method="POST", url=url, headers=headers, files=files, timeout=timeout)
@@ -210,6 +218,12 @@ class QiTechClient:
                 payload = resp.json()
             except ValueError:
                 payload = {"raw": resp.text}
+            # Attach the exact request body for debugging (do not leak in production)
+            try:
+                if sent_body_text:
+                    payload["_request_body"] = sent_body_text
+            except Exception:
+                pass
             raise QiTechError(resp.status_code, "Falha na chamada à QiTech", payload)
 
     # ---------- Métodos públicos ----------
@@ -237,3 +251,64 @@ class QiTechClient:
         Upload de arquivo com MD5 específico para autenticação
         """
         return self._request("POST", endpoint, files=files, params=params, file_md5=md5_hash)
+
+    def make_request(self, method: str, endpoint: str, 
+                     json_body: Optional[Dict[str, Any]] = None, 
+                     params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """
+        Alias para compatibilidade com conectores que utilizam 'make_request'.
+        """
+        return self._request(method, endpoint, json_body=json_body, params=params)
+
+    # ---------- Helper público para gerar headers de autenticação (útil para Postman/local proxy) ----------
+    def auth_headers_for(
+        self,
+        method: str,
+        endpoint: str,
+        json_body: Optional[Dict[str, Any]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        files: Optional[Dict[str, Tuple[str, bytes, str]]] = None,
+        file_md5: Optional[str] = None,
+    ) -> Dict[str, str]:
+        """
+        Gera um dicionário com os headers necessários para autenticação junto à QiTech:
+        - 'AUTHORIZATION': JWT ES512
+        - 'API-CLIENT-KEY': chave de cliente
+        - 'Content-Type': 'application/json' quando aplicável
+
+        Este método replica a lógica de cálculo do MD5 do payload usada internamente,
+        permitindo que ferramentas externas (ex.: Postman) obtenham o token para
+        executar requests assinadas.
+        """
+        method = (method or "GET").upper()
+
+        # prepara endpoint no formato relativo (/path?query)
+        endpoint_rel = endpoint if endpoint.startswith("/") else f"/{endpoint}"
+
+        # calcula pmd5 conforme a lógica interna
+        if files:
+            if file_md5:
+                pmd5 = file_md5
+            else:
+                first_key = next(iter(files))
+                file_tuple = files[first_key]
+                file_bytes = b""
+                if isinstance(file_tuple, (tuple, list)) and len(file_tuple) >= 2 and isinstance(file_tuple[1], (bytes, bytearray)):
+                    file_bytes = file_tuple[1]
+                pmd5 = self._payload_md5_bytes(file_bytes)
+            content_type_json = False
+        else:
+            if method in ("GET", "DELETE"):
+                pmd5 = self._payload_md5_bytes(b"{}")
+                content_type_json = False
+            else:
+                encoded_body = json.dumps(json_body or {}, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+                pmd5 = self._payload_md5_bytes(encoded_body)
+                content_type_json = True
+
+        token = self._jwt_for(method, endpoint_rel, pmd5)
+        headers: Dict[str, str] = {"AUTHORIZATION": token, "API-CLIENT-KEY": self.api_key}
+        if content_type_json:
+            headers["Content-Type"] = "application/json"
+
+        return headers

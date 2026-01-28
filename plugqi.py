@@ -8,9 +8,14 @@ from connectors.account_opening_orchestrator import AccountOpeningOrchestrator
 from connectors.document_upload import DocumentUploadConnector
 from connectors.financial_institution import FinancialInstitutionConnector
 from connectors.automatic_transfer import AutomaticTransferConnector
+import os
 from connectors.ted import TedConnector
 from connectors.ted_schedule import TedScheduleConnector
+from connectors.risk_solution import RiskSolutionClient
 from qitech_client import QiTechClient, QiTechError
+from connectors.qitech_ocr import QitechOCRClient
+from connectors.qitech_face_recognition import QitechFaceRecognitionClient
+from connectors.qitech_device_scan import QitechDeviceScanClient
 
 
 class PlugQi:
@@ -25,9 +30,28 @@ class PlugQi:
         self.account_opening = AccountOpeningConnector(self.client)
         self.document_upload = DocumentUploadConnector(self.client)
         self.financial_institution = FinancialInstitutionConnector(self.client)
-        self.automatic_transfer = AutomaticTransferConnector(self.client)
         self.ted = TedConnector(self.client)
         self.ted_schedule = TedScheduleConnector(self.client)
+        
+        # Risk Solution usa Key separada. Se não houver, usa MOCK.
+        risk_key = os.getenv("QITECH_API_KEY", "MOCK_KEY")
+        self.risk = RiskSolutionClient(api_key=risk_key)
+        # OCR CAAS (usa chave/API separada definida em QITECH_OCR_API_KEY)
+        try:
+            self.qitech_ocr = QitechOCRClient()
+        except Exception:
+            self.qitech_ocr = None
+        # Face Recognition CAAS (usa chave/API separada definida em .env)
+        try:
+            self.qitech_face_recognition = QitechFaceRecognitionClient()
+        except Exception:
+            self.qitech_face_recognition = None
+        # Device Scan CAAS (usa token/chave separada definida em .env)
+        try:
+            self.qitech_device_scan = QitechDeviceScanClient()
+        except Exception:
+            self.qitech_device_scan = None
+        
         # Orquestrador (inicializado após os outros connectors)
         self.account_orchestrator = AccountOpeningOrchestrator(self)
 

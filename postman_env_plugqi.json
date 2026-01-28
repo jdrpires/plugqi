@@ -1,0 +1,43 @@
+{
+  "id": "plugqi-local-env",
+  "name": "PlugQi - Local",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "enabled": true
+    },
+    {
+      "key": "local_proxy_url",
+      "value": "http://localhost:5000",
+      "enabled": true
+    },
+    {
+      "key": "use_local_proxy",
+      "value": "true",
+      "enabled": true
+    },
+    {
+      "key": "QITECH_CLIENT_KEY",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "ACCOUNT_KEY",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "REQUESTER_PROFILE_KEY",
+      "value": "",
+      "enabled": true
+    }
+  ],
+  "timestamp": 0,
+  "synced": false
+}
