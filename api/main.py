@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Security
 from fastapi.middleware.cors import CORSMiddleware
 from api.routers.onboarding import documents, risk, escrow, face_recognition, device_scan, auth_session, escrow_uploads
 from api.routers.payments import ted, pix, boleto
-from api.auth import get_api_key
+from api.auth import get_api_key, api_key_header
 from dotenv import load_dotenv
 import os
 
@@ -28,7 +28,7 @@ app.add_middleware(
 # Include Routers with Security
 # Onboarding
 app.include_router(documents.router, prefix="/api/v1/onboarding", dependencies=[Depends(get_api_key)], include_in_schema=False)
-app.include_router(risk.router, prefix="/api/v1/onboarding", dependencies=[Depends(get_api_key)], include_in_schema=False)
+app.include_router(risk.router, prefix="/api/v1/onboarding", dependencies=[Security(api_key_header)])
 app.include_router(escrow.router, prefix="/api/v1/onboarding", dependencies=[Depends(get_api_key)])
 app.include_router(face_recognition.router, prefix="/api/v1/onboarding", dependencies=[Depends(get_api_key)], include_in_schema=False)
 app.include_router(device_scan.router, prefix="/api/v1/onboarding", dependencies=[Depends(get_api_key)], include_in_schema=False)

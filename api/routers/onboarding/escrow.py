@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Body
 from pydantic import ValidationError
+from typing import Union
 from plugqi import PlugQi
 from api.schemas import EscrowPJRequest
 from qitech_client import QiTechError
@@ -23,57 +24,101 @@ def _digits_only(s: str) -> str:
     return "".join(ch for ch in (s or "") if ch.isdigit())
 
 
-@router.post("/pj")
-def reserve_escrow_pj(payload: dict):
+@router.post(
+    "/pj",
+    openapi_extra={
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {"$ref": "#/components/schemas/EscrowPJRequest"}
+                }
+            }
+        }
+    },
+)
+def reserve_escrow_pj(payload: Union[dict, EscrowPJRequest] = Body(...)):
     """
     Reserve Escrow Account for Legal Person (PJ)
-    - Normaliza CNPJ/CPF removendo pontuação
-    - Captura erros do provedor e retorna payload sanitizado sem citar o provedor
     """
     try:
-        # Accept both flat payloads and wrapped {"account_owner": {...}, "legal_representatives": [...]}
-        if "account_owner" in payload and isinstance(payload.get("account_owner"), dict):
-            owner = payload.get("account_owner", {})
-            data = {
-                "company_document_number": owner.get("company_document_number") or owner.get("document_number") or owner.get("cnpj"),
-                "email": owner.get("email"),
-                "foundation_date": owner.get("foundation_date") or owner.get("foundationDate"),
-                "name": owner.get("name") or owner.get("legal_name") or owner.get("company_name"),
-                "legal_representatives": payload.get("legal_representatives", []),
-            }
+        # Validar payload com Pydantic
+        if isinstance(payload, dict):
+            parsed = EscrowPJRequest.parse_obj(payload)
         else:
-            data = payload
-
-        # Normalize representative field names to match EscrowPJRequest / LegalRepresentative
-        reps = []
-        for rep in data.get("legal_representatives", []):
-            r = dict(rep)
-            if "individual_document_number" not in r and "document_number" in r:
-                r["individual_document_number"] = r.get("document_number")
-            if "birth_date" not in r and "birthdate" in r:
-                r["birth_date"] = r.get("birthdate")
-            reps.append(r)
-        data["legal_representatives"] = reps
-
-        # Validate/parse using the existing Pydantic model
-        parsed = EscrowPJRequest.parse_obj(data)
-
-        # Normalize company document (CNPJ) to digits only
-        company_doc = _digits_only(parsed.company_document_number)
-
-        # Normalize legal representatives individual_document_number
+            parsed = payload
+        
+        data = parsed.dict(exclude_none=True)
+        
+        # Determinar formato do payload
+        if "account_owner" in data and data["account_owner"]:
+            # Formato QiTech
+            owner = data["account_owner"]
+            company_doc = owner.get("company_document_number")
+            email = owner.get("email")
+            foundation_date = owner.get("foundation_date")
+            name = owner.get("name")
+            # Accept multiple shapes: top-level "legal_representatives" or
+            # inside account_owner as "company_representatives" (helpers may build this)
+            legal_reps_raw = (
+                data.get("legal_representatives")
+                or owner.get("company_representatives")
+                or data.get("company_representatives")
+                or []
+            )
+        else:
+            # Formato legado (retrocompatibilidade)
+            company_doc = data.get("company_document_number")
+            email = data.get("email")
+            foundation_date = data.get("foundation_date")
+            name = data.get("name")
+            legal_reps_raw = data.get("legal_representatives", [])
+        
+        # Normalizar CNPJ (apenas dígitos)
+        company_doc = _digits_only(company_doc)
+        
+        # Processar representantes legais - APENAS campos aceitos pela QiTech na RESERVA
+        # Campos permitidos: name, document_number, birthdate, email, documents, face
         legal_reps = []
-        for rep in parsed.legal_representatives:
-            d = rep.dict()
-            if "individual_document_number" in d and d["individual_document_number"]:
-                d["individual_document_number"] = _digits_only(d["individual_document_number"]) 
-            legal_reps.append(d)
-
+        for rep in legal_reps_raw:
+            r = dict(rep) if not isinstance(rep, dict) else rep
+            
+            # Construir representante com APENAS os campos aceitos na reserva
+            filtered_rep = {}
+            
+            # Campos obrigatórios
+            if r.get("name"):
+                filtered_rep["name"] = r.get("name")
+            
+            # Documento (normalizar para apenas dígitos)
+            doc_num = r.get("document_number") or r.get("individual_document_number")
+            if doc_num:
+                filtered_rep["document_number"] = _digits_only(doc_num)
+            
+            # Data de nascimento
+            birthdate = r.get("birthdate") or r.get("birth_date")
+            if birthdate:
+                filtered_rep["birthdate"] = birthdate
+            
+            # Campos opcionais
+            if r.get("email"):
+                filtered_rep["email"] = r.get("email")
+            
+            if r.get("documents"):
+                filtered_rep["documents"] = r.get("documents")
+            
+            if r.get("face"):
+                filtered_rep["face"] = r.get("face")
+            
+            # Só adicionar se tiver pelo menos name e document_number
+            if filtered_rep.get("name") and filtered_rep.get("document_number"):
+                legal_reps.append(filtered_rep)
+        
+        # Chamar a função do SDK
         response = plugqi.account_opening.reservar_conta_escrow_pj(
             company_document_number=company_doc,
-            email=parsed.email,
-            foundation_date=parsed.foundation_date,
-            name=parsed.name,
+            email=email,
+            foundation_date=foundation_date,
+            name=name,
             legal_representatives=legal_reps,
         )
 

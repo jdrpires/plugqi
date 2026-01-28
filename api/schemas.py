@@ -43,7 +43,7 @@ class RiskNaturalPersonRequest(BaseModel):
     emails: List[EmailSchema]
     phones: List[PhoneSchema]
     address: AddressSchema
-    source: Dict[str, Any]
+    source: Dict[str, Any] = Field(..., example={"source_system": "risk", "id": "abc123"})
 
 
 class RiskLegalPersonRequest(BaseModel):
@@ -64,31 +64,78 @@ class RiskLegalPersonRequest(BaseModel):
     emails: Optional[List[EmailSchema]] = None
     phones: Optional[List[PhoneSchema]] = None
     address: Optional[AddressSchema] = None
-    source: Optional[Dict[str, Any]] = None
-    partners: Optional[List[Dict[str, Any]]] = None
-    legal_representatives: Optional[List[Dict[str, Any]]] = None
+    source: Optional[Dict[str, Any]] = Field(None, example={"source_system": "risk", "id": "xyz789"})
+    partners: Optional[List[Dict[str, Any]]] = Field(None, example=[{"name": "Partner Ltda", "document_number": "12345678000195"}])
+    legal_representatives: Optional[List[Dict[str, Any]]] = Field(None, example=[{"name": "Rep Name", "individual_document_number": "01234567890"}])
 
 # --- Escrow Account ---
 
 class LegalRepresentative(BaseModel):
-    name: str
-    individual_document_number: str
-    birth_date: str
-    email: EmailStr
-    address: AddressSchema
-    phone: PhoneSchema
-    is_pep: bool = False
-    marital_status: str = "single"
-    mother_name: str
-    nationality: str = "Brasileira"
-    person_type: str = "natural"
+    """
+    Representante Legal para Escrow PJ
+    
+    IMPORTANTE: Na etapa de RESERVA, apenas os seguintes campos são enviados à QiTech:
+    - name, document_number, birthdate, email (opcional), documents, face (opcional)
+    
+    Os demais campos (is_pep, marital_status, etc.) são aceitos mas filtrados automaticamente,
+    sendo usados apenas na etapa de CONFIRMAÇÃO.
+    """
+    # Campos principais (usados na RESERVA)
+    name: Optional[str] = None
+    document_number: Optional[str] = None  # CPF do representante
+    birthdate: Optional[str] = None  # Formato: YYYY-MM-DD
+    email: Optional[EmailStr] = None
+    documents: Optional[Dict[str, Any]] = Field(None, example={
+        "national_registry_of_foreigners": {
+            "ocr_front_key": "uuid-frente",
+            "ocr_back_key": "uuid-verso"
+        }
+    })
+    face: Optional[str] = Field(None, description="UUID da foto facial para biometria")
+    
+    # Campos alternativos (retrocompatibilidade)
+    individual_document_number: Optional[str] = None
+    birth_date: Optional[str] = None
+    
+    # Campos extras (usados apenas na CONFIRMAÇÃO, não na RESERVA)
+    address: Optional[AddressSchema] = None
+    phone: Optional[PhoneSchema] = None
+    is_pep: Optional[bool] = False
+    marital_status: Optional[str] = None
+    mother_name: Optional[str] = None
+    nationality: Optional[str] = None
+    person_type: Optional[str] = None
 
-class EscrowPJRequest(BaseModel):
+    class Config:
+        extra = "allow"
+
+class AccountOwner(BaseModel):
+    """Dados do titular da conta (empresa)"""
     company_document_number: str
     email: EmailStr
     foundation_date: str
     name: str
-    legal_representatives: List[LegalRepresentative]
+
+    class Config:
+        extra = "allow"
+
+class EscrowPJRequest(BaseModel):
+    """Suporta dois formatos:
+    1. Formato QiTech: {"account_owner": {...}, "legal_representatives": [...]}
+    2. Formato legado: {"company_document_number": ..., "email": ..., ...}
+    """
+    # Formato QiTech (preferencial)
+    account_owner: Optional[AccountOwner] = None
+    legal_representatives: Optional[List[LegalRepresentative]] = None
+    
+    # Formato legado (retrocompatibilidade)
+    company_document_number: Optional[str] = None
+    email: Optional[EmailStr] = None
+    foundation_date: Optional[str] = None
+    name: Optional[str] = None
+    
+    class Config:
+        extra = "allow"
 
 # --- Document Upload ---
 
